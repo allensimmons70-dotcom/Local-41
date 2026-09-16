@@ -1,0 +1,26 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Local 41//Union Meetings//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:local41-third-saturday-20260919@local41
+DTSTAMP:20260916T103500Z
+DTSTART;TZID=America/Chicago:20260919T100000
+DTEND;TZID=America/Chicago:20260919T110000
+RRULE:FREQ=MONTHLY;BYDAY=3SA
+SUMMARY:Local 41 Union Meeting
+LOCATION:10525 N Ambassador Dr\, Kansas City\, MO 64153
+DESCRIPTION:Your voice matters. Show up\, stay informed\, and stand together. Local 41 meetings are where we discuss workplace issues\, protect our rights\, and strengthen our Union.\n\nOur Plant. Our People. Our Voice.
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Local 41 Union Meeting tomorrow at 10:00 AM
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT1H
+ACTION:DISPLAY
+DESCRIPTION:Local 41 Union Meeting starts in 1 hour
+END:VALARM
+END:VEVENT
+END:VCALENDAR
