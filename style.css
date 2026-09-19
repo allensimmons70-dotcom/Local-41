@@ -1,0 +1,431 @@
+:root {
+  --black: #111111;
+  --gold: #d9a514;
+  --paper: #f6f3eb;
+  --white: #ffffff;
+  --gray: #6e6e6e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--black);
+}
+
+.wrap {
+  width: min(1120px, calc(100% - 36px));
+  margin: auto;
+}
+
+/* HEADER */
+
+.top {
+  background: #0e0e0e;
+  border-bottom: 4px solid var(--gold);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.nav {
+  height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  color: white;
+  text-decoration: none;
+  font-size: 21px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.brand b {
+  font-size: 38px;
+  color: var(--gold);
+}
+
+.brand small {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 3px;
+  margin-top: -7px;
+}
+
+.nav-btn {
+  color: white;
+  text-decoration: none;
+  border: 1px solid #555;
+  padding: 11px 15px;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+/* HERO */
+
+.hero {
+  background:
+    linear-gradient(
+      120deg,
+      #111 0%,
+      #111 67%,
+      #1d1d1d 67%
+    );
+
+  color: white;
+  padding: 92px 0 86px;
+  border-bottom: 8px solid var(--gold);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 270px;
+  gap: 60px;
+  align-items: center;
+}
+
+.eyebrow {
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+
+.hero h1 {
+  font-size: clamp(48px, 7vw, 86px);
+  line-height: .88;
+  margin: 17px 0 24px;
+  letter-spacing: -5px;
+}
+
+.hero h1 em,
+.voice em {
+  font-style: normal;
+  color: var(--gold);
+}
+
+.lead {
+  max-width: 650px;
+  font-size: 18px;
+  line-height: 1.55;
+  color: #d7d7d7;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+
+/* BUTTONS */
+
+.btn {
+  display: inline-block;
+  padding: 15px 20px;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.gold {
+  background: var(--gold);
+  color: #111;
+}
+
+.outline {
+  border: 1px solid #777;
+  color: white;
+}
+
+.black {
+  background: #111;
+  color: white;
+}
+
+/* HERO SIDE MESSAGE */
+
+.statement {
+  border-left: 5px solid var(--gold);
+  padding-left: 24px;
+}
+
+.statement span {
+  display: block;
+  font-size: 28px;
+  font-weight: 900;
+  margin: 13px 0;
+}
+
+/* MEETING */
+
+.meeting {
+  padding: 70px 0;
+  background: white;
+}
+
+.dark {
+  color: #6f5410;
+}
+
+.meeting-card {
+  border: 2px solid #111;
+
+  display: grid;
+  grid-template-columns: 170px 1fr 230px;
+
+  box-shadow: 8px 8px 0 var(--gold);
+}
+
+.date-box {
+  background: #111;
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 35px 20px;
+}
+
+.date-box b {
+  font-size: 55px;
+  color: var(--gold);
+}
+
+.date-box span {
+  font-weight: 900;
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+
+.meeting-info {
+  padding: 30px;
+}
+
+.meeting-info h2 {
+  font-size: 29px;
+  margin: 0 0 12px;
+}
+
+.meeting-info p {
+  line-height: 1.45;
+}
+
+.muted {
+  color: var(--gray);
+}
+
+.meeting-action {
+  padding: 30px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  gap: 10px;
+}
+
+.meeting-action small {
+  text-align: center;
+  color: #777;
+}
+
+/* MEMBER HUB */
+
+.tools {
+  padding: 75px 0 85px;
+}
+
+.tools h2 {
+  font-size: 38px;
+  margin: 8px 0 32px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.cards article {
+  background: white;
+  border-top: 5px solid #111;
+  padding: 24px;
+  min-height: 250px;
+  position: relative;
+}
+
+.num {
+  color: var(--gold);
+  font-size: 32px;
+  font-weight: 900;
+}
+
+.cards h3 {
+  font-size: 20px;
+  margin: 12px 0;
+}
+
+.cards p {
+  color: #666;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+.soon {
+  position: absolute;
+  bottom: 22px;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+/* BOTTOM STATEMENT */
+
+.voice {
+  background: var(--gold);
+  padding: 45px 0;
+}
+
+.voice h2 {
+  font-size: 36px;
+  margin: 0 0 10px;
+}
+
+.voice p {
+  font-weight: 900;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* FOOTER */
+
+footer {
+  background: #111;
+  color: white;
+  padding: 32px 0;
+}
+
+footer .wrap {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+footer span,
+footer small {
+  color: #aaa;
+}
+
+/* TABLET */
+
+@media (max-width: 780px) {
+
+  .hero {
+    padding: 62px 0;
+    background: #111;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .statement {
+    display: none;
+  }
+
+  .hero h1 {
+    letter-spacing: -3px;
+  }
+
+  .meeting-card {
+    grid-template-columns: 1fr;
+    box-shadow: 6px 6px 0 var(--gold);
+  }
+
+  .date-box {
+    padding: 22px;
+  }
+
+  .meeting-action {
+    padding-top: 0;
+  }
+
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cards article {
+    min-height: 220px;
+  }
+}
+
+/* PHONE */
+
+@media (max-width: 520px) {
+
+  .nav {
+    height: 68px;
+  }
+
+  .brand b {
+    font-size: 31px;
+  }
+
+  .hero h1 {
+    font-size: 49px;
+  }
+
+  .lead {
+    font-size: 16px;
+  }
+
+  .actions .btn {
+    width: 100%;
+  }
+
+  .tools h2 {
+    font-size: 31px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .cards article {
+    min-height: 190px;
+  }
+
+  .voice h2 {
+    font-size: 29px;
+  }
+
+  footer .wrap {
+    display: block;
+  }
+
+  footer span,
+  footer small {
+    display: block;
+    margin-top: 10px;
+  }
+}
