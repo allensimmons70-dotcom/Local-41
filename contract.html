@@ -10,18 +10,27 @@
   <meta name="theme-color"
         content="#111111">
 
-  <title>Know Your Contract | Local 41 KC</title>
+  <title>
+    Know Your Contract | Local 41 KC
+  </title>
 
   <meta name="description"
-        content="Local 41 Kansas City contract information, workplace rights and member resources.">
+        content="Local 41 Kansas City contract information, member guides and collective bargaining agreement resources.">
 
   <link rel="stylesheet"
         href="style.css">
+
+  <script src="script.js"
+          defer></script>
 </head>
 
 
 <body>
 
+
+<!-- =========================================
+     HEADER
+     ========================================= -->
 
 <header class="top">
 
@@ -48,6 +57,10 @@
 
       <a href="board.html">
         UNION BOARD
+      </a>
+
+      <a href="contract.html">
+        CONTRACT
       </a>
 
       <a href="index.html#meeting">
@@ -79,17 +92,23 @@
   <div class="wrap">
 
     <p class="eyebrow">
-      LOCAL 41 MEMBER HUB
+      LOCAL 41 MEMBER RESOURCE
     </p>
+
 
     <h1>
       KNOW YOUR
       <em>CONTRACT.</em>
     </h1>
 
+
     <p class="contract-lead">
-      Search important contract topics, review key provisions,
-      and listen to contract language directly from your phone.
+
+      Find important contract topics,
+      read key agreement language
+      and use the Member Guide for
+      a plain-language overview.
+
     </p>
 
   </div>
@@ -107,14 +126,17 @@
   <div class="wrap">
 
     <label for="contractSearch">
-      SEARCH THE CONTRACT HUB
+      SEARCH THE CONTRACT
     </label>
+
 
     <input
       id="contractSearch"
       type="search"
-      placeholder="Try: attendance, overtime, grievance, training..."
-      oninput="searchContract()">
+      placeholder="Try: overtime, attendance, 75%, grievance..."
+      oninput="searchContract()"
+    >
+
 
     <div class="topic-links">
 
@@ -124,6 +146,10 @@
 
       <button onclick="quickSearch('training')">
         TRAINING
+      </button>
+
+      <button onclick="quickSearch('75%')">
+        75% ASSESSMENT
       </button>
 
       <button onclick="quickSearch('grievance')">
@@ -148,12 +174,17 @@
 
 <!-- =========================================
      ARTICLE 6
+     ATTENDANCE
      ========================================= -->
 
-<section class="contract-section contract-item"
-         data-search="attendance points doctor note absence tardy early out article 6">
+<section
+  id="article6"
+  class="contract-section contract-item"
+  data-search="article 6 attendance attendance points tardiness late early out absence doctor note doctors note penalty points 12 months 60 days 30 days verbal written final warning discharge"
+>
 
   <div class="wrap">
+
 
     <div class="contract-heading">
 
@@ -169,53 +200,76 @@
 
       </div>
 
+
       <span class="contract-tag">
-        FREQUENTLY USED
+        POINTS & DISCIPLINE
       </span>
 
     </div>
 
 
+
     <div class="contract-panel">
 
-      <div class="member-guide"
-           id="article6-guide">
+
+      <div
+        class="member-guide"
+        id="article6-guide"
+      >
 
         <span class="guide-label">
-          MEMBER QUICK GUIDE
+          MEMBER GUIDE
         </span>
 
+
         <h3>
-          Attendance Points
+          Attendance points have rules for
+          assessment, discipline and removal.
         </h3>
 
-        <p>
-          The agreement establishes point values for tardiness,
-          early departures, absences and unreported absences.
-        </p>
 
         <p>
-          Penalty points expire twelve months from the date
-          they are issued.
+          Article 6 assigns different point values
+          depending on the type of attendance occurrence.
+          Tardiness is one-half point, while other
+          occurrences may carry different values.
         </p>
 
+
         <p>
-          Employees may also receive point reductions after
-          completing specified periods without receiving
-          additional points.
+          Penalty points expire twelve months
+          from the date they are issued.
+        </p>
+
+
+        <p>
+          The agreement also provides an additional
+          point-reduction process. If an Employee
+          completes sixty calendar days without
+          accruing another point, one point may be
+          dropped. For each thirty calendar days
+          thereafter without another point, an
+          additional point may be dropped.
+        </p>
+
+
+        <p>
+          The Article lists progressive attendance
+          discipline at two, four, six and nine points.
         </p>
 
       </div>
 
 
+
       <div class="read-controls">
 
         <button onclick="readText('article6-guide')">
-          🔊 READ GUIDE
+          🔊 READ MEMBER GUIDE
         </button>
 
-        <button onclick="readText('article6-contract')">
-          🔊 READ CONTRACT
+        <button onclick="readText('article6-language')">
+          🔊 READ CONTRACT LANGUAGE
         </button>
 
         <button onclick="stopReading()">
@@ -225,64 +279,89 @@
       </div>
 
 
+
       <details>
 
         <summary>
-          READ CONTRACT LANGUAGE
+          READ KEY CONTRACT LANGUAGE
         </summary>
 
-        <div class="contract-language"
-             id="article6-contract">
+
+        <div
+          class="contract-language"
+          id="article6-language"
+        >
 
           <p>
-            An Employee’s attendance control year begins on
-            the day the Employee receives a point and ends
-            12 months later on the same date.
+            <strong>
+              Section 4 — Attendance Control Year and Points for Absence
+            </strong>
+          </p>
+
+
+          <p>
+            An Employee's attendance control year
+            begins on the day the Employee receives
+            a point and ends twelve months later
+            on the same date.
+          </p>
+
+
+          <p>
+            Penalty points expire twelve months
+            from the date of issue.
+          </p>
+
+
+          <p>
+            Tardiness is assessed at one-half point.
+            Checking out early after working less
+            than one-half of the scheduled shift
+            is assessed at one point.
+            Checking out early after working
+            one-half or more of the scheduled shift
+            is assessed at one-half point.
+          </p>
+
+
+          <p>
+            <strong>
+              Section 5 — Discipline
+            </strong>
+          </p>
+
+
+          <p>
+            Two points — verbal warning.
           </p>
 
           <p>
-            Penalty points expire 12 months from the date
-            of issue.
+            Four points — written warning.
           </p>
 
           <p>
-            Tardiness: 1/2 point.
+            Six points — record review and
+            final written warning.
           </p>
 
           <p>
-            Check-out early after working less than one-half
-            of the scheduled shift: 1 point.
+            Nine points — discharge.
           </p>
 
-          <p>
-            Check-out early after working one-half or more
-            of the scheduled shift: 1/2 point.
-          </p>
 
           <p>
-            Unreported absence: 2 points.
-          </p>
-
-          <p>
-            All other absences: each individual occurrence
-            will incur 1 point.
-          </p>
-
-          <p>
-            If an Employee completes 60 calendar days with
-            no points accrued, then 1 point will be dropped
-            from the record.
-          </p>
-
-          <p>
-            For each 30 calendar days thereafter with no
-            points accrued, an additional 1 point will be
-            dropped.
+            If an Employee completes sixty calendar
+            days with no points accrued, then one point
+            will be dropped from the Employee's record.
+            For each thirty calendar days thereafter
+            with no points accrued, an additional
+            one point will be dropped.
           </p>
 
         </div>
 
       </details>
+
 
     </div>
 
@@ -294,12 +373,17 @@
 
 <!-- =========================================
      ARTICLE 8
+     JOB ASSIGNMENTS & BIDDING
      ========================================= -->
 
-<section class="contract-section alt contract-item"
-         data-search="job bid bidding training qualification competency 75 percent article 8">
+<section
+  id="article8"
+  class="contract-section alt contract-item"
+  data-search="article 8 job assignments bidding bid training qualification qualifications training rate 50 percent 75 percent competency assessment schedule b thirty days 30 days full rate"
+>
 
   <div class="wrap">
+
 
     <div class="contract-heading">
 
@@ -315,54 +399,80 @@
 
       </div>
 
+
       <span class="contract-tag">
-        TRAINING
+        TRAINING & QUALIFICATION
       </span>
 
     </div>
 
 
+
     <div class="contract-panel">
 
-      <div class="member-guide"
-           id="article8-guide">
+
+      <div
+        class="member-guide"
+        id="article8-guide"
+      >
 
         <span class="guide-label">
-          MEMBER QUICK GUIDE
+          MEMBER GUIDE
         </span>
 
+
         <h3>
-          Training & Qualification
+          Training and qualification have
+          contractual steps.
         </h3>
 
-        <p>
-          Successful bidders receive the contractual training
-          rate once training begins or within 30 days of
-          accepting the bid, whichever occurs first.
-        </p>
 
         <p>
-          After completing 75% of the required training hours,
-          the employee is to receive a competency assessment.
+          A successful bidder receives fifty percent
+          of the difference in hourly rate for the new
+          position once training begins or within
+          thirty days of accepting the bid,
+          whichever occurs sooner.
         </p>
 
+
         <p>
-          Once the employee successfully qualifies, the
-          employee becomes eligible for the full rate of
-          the position.
+          If the Employee has not been moved into
+          the new role within thirty days, the agreement
+          provides for compensation at the training
+          rate until the Employee is moved.
+        </p>
+
+
+        <p>
+          After completing seventy-five percent
+          of the required training hours, the agreement
+          states that the Employee will receive a
+          competency assessment by a training manager
+          or designee to establish qualifications.
+        </p>
+
+
+        <p>
+          Reaching seventy-five percent does not
+          automatically mean the Employee receives
+          the full rate. Successful qualification makes
+          the Employee eligible for the full rate
+          of the position.
         </p>
 
       </div>
 
 
+
       <div class="read-controls">
 
         <button onclick="readText('article8-guide')">
-          🔊 READ GUIDE
+          🔊 READ MEMBER GUIDE
         </button>
 
-        <button onclick="readText('article8-contract')">
-          🔊 READ CONTRACT
+        <button onclick="readText('article8-language')">
+          🔊 READ CONTRACT LANGUAGE
         </button>
 
         <button onclick="stopReading()">
@@ -372,51 +482,71 @@
       </div>
 
 
+
       <details>
 
         <summary>
-          READ CONTRACT LANGUAGE
+          READ KEY CONTRACT LANGUAGE
         </summary>
 
-        <div class="contract-language"
-             id="article8-contract">
+
+        <div
+          class="contract-language"
+          id="article8-language"
+        >
 
           <p>
-            The successful bidder for a posted job opening
-            will receive fifty percent of the difference in
-            hourly rate for the position once they begin
-            training or within thirty days of accepting the
-            bid, whichever is sooner.
+            <strong>
+              Section 4
+            </strong>
           </p>
 
-          <p>
-            If the employee was not able to move into the
-            new role within thirty days, the employee will
-            be compensated at the training rate until moved
-            into the new position.
-          </p>
 
           <p>
-            After the employee completes seventy-five percent
-            of the training hours they will receive a competency
-            assessment by a training manager or their designee
+            The successful bidder for a posted job
+            opening will receive fifty percent of the
+            difference in hourly rate for the position
+            once they begin training or within thirty
+            days of accepting the bid,
+            whichever is sooner.
+          </p>
+
+
+          <p>
+            If the Employee was not able to move into
+            the new role within thirty days,
+            the Employee will be compensated at
+            the training rate until moved into
+            the new position.
+          </p>
+
+
+          <p>
+            After the Employee completes seventy-five
+            percent of the training hours,
+            they will receive a competency assessment
+            by a training manager or their designee
             to establish their qualifications.
           </p>
 
-          <p>
-            Upon successful qualification, the employee will
-            be eligible for the full rate of the position.
-          </p>
 
           <p>
-            If the employee is not successful, they will be
-            allotted the additional training provided by
-            Schedule B.
+            Upon successful qualification,
+            the Employee will be eligible for
+            the full rate of the position.
+          </p>
+
+
+          <p>
+            If the Employee is not successful,
+            they will be allotted the additional
+            training provided by Schedule B.
           </p>
 
         </div>
 
       </details>
+
 
     </div>
 
@@ -428,12 +558,17 @@
 
 <!-- =========================================
      ARTICLE 12
+     GRIEVANCE PROCEDURE
      ========================================= -->
 
-<section class="contract-section contract-item"
-         data-search="grievance dispute violation steward step 1 step 2 arbitration article 12">
+<section
+  id="article12"
+  class="contract-section contract-item"
+  data-search="article 12 grievance grievance procedure steward grievant step one step 1 step two step 2 committee arbitration fmcs fourteen 14 calendar days business agent"
+>
 
   <div class="wrap">
+
 
     <div class="contract-heading">
 
@@ -449,55 +584,81 @@
 
       </div>
 
+
       <span class="contract-tag">
-        REPRESENTATION
+        PROTECT YOUR RIGHTS
       </span>
 
     </div>
 
 
+
     <div class="contract-panel">
 
-      <div class="member-guide"
-           id="article12-guide">
+
+      <div
+        class="member-guide"
+        id="article12-guide"
+      >
 
         <span class="guide-label">
-          MEMBER QUICK GUIDE
+          MEMBER GUIDE
         </span>
 
+
         <h3>
-          Protecting Contract Rights
+          Article 12 explains how contract disputes
+          move through the grievance process.
         </h3>
 
-        <p>
-          A grievance involves a dispute concerning the
-          interpretation, application or observance of the
-          collective bargaining agreement.
-        </p>
 
         <p>
-          The grievance procedure includes multiple steps,
-          beginning with discussion and written filing when
-          the issue is not resolved.
+          The agreement defines a grievance as a
+          controversy, misunderstanding or dispute
+          involving the interpretation, application
+          or observance of the agreement.
         </p>
 
+
         <p>
-          Members should contact a steward as soon as
-          possible when they believe a contract violation
-          may have occurred.
+          Step One begins with discussion involving
+          the Company's designated representative
+          together with the steward and/or grievant.
+        </p>
+
+
+        <p>
+          If the matter is not resolved,
+          the grievance must be reduced to writing
+          within fourteen calendar days
+          of the violation.
+        </p>
+
+
+        <p>
+          Unresolved Step One grievances move to
+          the CertainTeed / Teamsters Local 41
+          Grievance Committee at Step Two.
+        </p>
+
+
+        <p>
+          Article 12 also provides a process for
+          arbitration when a grievance remains unresolved.
         </p>
 
       </div>
 
 
+
       <div class="read-controls">
 
         <button onclick="readText('article12-guide')">
-          🔊 READ GUIDE
+          🔊 READ MEMBER GUIDE
         </button>
 
-        <button onclick="readText('article12-contract')">
-          🔊 READ CONTRACT
+        <button onclick="readText('article12-language')">
+          🔊 READ CONTRACT LANGUAGE
         </button>
 
         <button onclick="stopReading()">
@@ -507,42 +668,77 @@
       </div>
 
 
+
       <details>
 
         <summary>
-          READ CONTRACT LANGUAGE
+          READ KEY CONTRACT LANGUAGE
         </summary>
 
-        <div class="contract-language"
-             id="article12-contract">
+
+        <div
+          class="contract-language"
+          id="article12-language"
+        >
 
           <p>
-            A grievance is jointly defined as any controversy,
-            misunderstanding or dispute arising as to the
-            interpretation, application or observance of any
-            provision of the Agreement.
+            <strong>
+              Section 1
+            </strong>
           </p>
 
-          <p>
-            First Step grievances that are not resolved are
-            to be reduced to writing within fourteen calendar
-            days of the violation.
-          </p>
 
           <p>
-            Grievances not resolved at Step 1 are submitted
-            to the CertainTeed / Teamsters Local 41 Grievance
-            Committee at Step 2.
+            A grievance is defined as any controversy,
+            misunderstanding or dispute arising as to
+            the interpretation, application or observance
+            of any provisions of the Agreement.
           </p>
 
+
           <p>
-            If the dispute remains unresolved, the agreement
-            provides a process for arbitration through FMCS.
+            At the First Step, the grievance is discussed
+            with the Company's designated representative
+            along with the steward and/or grievant.
+          </p>
+
+
+          <p>
+            If the grievance is not resolved,
+            it must be reduced to writing within
+            fourteen calendar days of the violation.
+          </p>
+
+
+          <p>
+            Grievances not resolved at Step One
+            will be submitted to the CertainTeed /
+            Teamsters Local 41 Grievance Committee
+            in Step Two.
+          </p>
+
+
+          <p>
+            The Step Two committee includes Union
+            representatives selected by the Local 41
+            Business Agent and Company representatives.
+            The Employee and Business Agent are given
+            an opportunity to state the Union's case,
+            and both parties present known supporting
+            evidence.
+          </p>
+
+
+          <p>
+            If the difference is not settled,
+            the Union has thirty calendar days
+            to file a demand with FMCS for arbitration.
           </p>
 
         </div>
 
       </details>
+
 
     </div>
 
@@ -554,12 +750,17 @@
 
 <!-- =========================================
      ARTICLE 13
+     DISCHARGE & SUSPENSION
      ========================================= -->
 
-<section class="contract-section alt contract-item"
-         data-search="discipline discharge suspension steward 14 days article 13">
+<section
+  id="article13"
+  class="contract-section alt contract-item"
+  data-search="article 13 discharge suspension discipline disciplinary action steward fourteen 14 calendar days investigation attendance article 6 written notification"
+>
 
   <div class="wrap">
+
 
     <div class="contract-heading">
 
@@ -575,6 +776,7 @@
 
       </div>
 
+
       <span class="contract-tag">
         DISCIPLINE
       </span>
@@ -582,47 +784,69 @@
     </div>
 
 
+
     <div class="contract-panel">
 
-      <div class="member-guide"
-           id="article13-guide">
+
+      <div
+        class="member-guide"
+        id="article13-guide"
+      >
 
         <span class="guide-label">
-          MEMBER QUICK GUIDE
+          MEMBER GUIDE
         </span>
 
+
         <h3>
-          Discipline & Representation
+          Article 13 establishes procedures
+          for discipline and discharge.
         </h3>
 
-        <p>
-          Article 13 contains timing requirements for company
-          discipline and discharge.
-        </p>
 
         <p>
-          The Article specifically states that these provisions
-          do not apply to discipline issued under Article 6,
-          Attendance.
+          The Article expressly states that these
+          provisions do not apply to discipline
+          under Article 6 — Attendance.
         </p>
 
+
         <p>
-          When disciplinary action is being taken or considered,
-          a Steward is to be present whether the employee
-          requested one or not.
+          For discipline covered by Article 13,
+          discharge and discipline generally must
+          be taken within fourteen calendar days
+          of the incident or the Company's knowledge
+          of the incident.
+        </p>
+
+
+        <p>
+          If additional investigation time is needed,
+          the agreement provides a notification process
+          involving the Local Union.
+        </p>
+
+
+        <p>
+          Article 13 also states that whenever
+          disciplinary action is being taken or
+          considered with an Employee,
+          a Steward will be present whether
+          requested by the Employee or not.
         </p>
 
       </div>
 
 
+
       <div class="read-controls">
 
         <button onclick="readText('article13-guide')">
-          🔊 READ GUIDE
+          🔊 READ MEMBER GUIDE
         </button>
 
-        <button onclick="readText('article13-contract')">
-          🔊 READ CONTRACT
+        <button onclick="readText('article13-language')">
+          🔊 READ CONTRACT LANGUAGE
         </button>
 
         <button onclick="stopReading()">
@@ -632,43 +856,78 @@
       </div>
 
 
+
       <details>
 
         <summary>
-          READ CONTRACT LANGUAGE
+          READ KEY CONTRACT LANGUAGE
         </summary>
 
-        <div class="contract-language"
-             id="article13-contract">
+
+        <div
+          class="contract-language"
+          id="article13-language"
+        >
 
           <p>
-            These provisions do not apply to discipline under
-            Article 6 — Attendance.
+            These provisions do not apply to discipline
+            under Article 6 — Attendance.
           </p>
 
-          <p>
-            Discharge and discipline must be taken by the
-            Company within fourteen calendar days of the
-            incident or knowledge of the incident.
-          </p>
 
           <p>
-            If more time is required, the Company must provide
-            written notification of the need for additional
-            investigation time to the Local Union within the
-            original fourteen calendar days.
+            <strong>
+              Section 1
+            </strong>
           </p>
 
+
           <p>
-            Any time disciplinary action is being taken or
-            considered with an Employee, a Steward will be
-            present regardless of whether requested by the
-            Employee or not.
+            Discharge and discipline must be taken
+            by the Company within fourteen calendar
+            days of the incident or knowledge
+            of the incident.
+          </p>
+
+
+          <p>
+            If more time is required to make the
+            discipline determination, the Company
+            must provide written notification of a need
+            for up to an additional sixty calendar days
+            to the Local Union within the original
+            fourteen calendar days.
+          </p>
+
+
+          <p>
+            Under extenuating circumstances,
+            if the Company is not able to complete
+            the investigation within the additional
+            time, the Company will contact the Union,
+            provide an update and request additional
+            time if needed.
+          </p>
+
+
+          <p>
+            <strong>
+              Section 3
+            </strong>
+          </p>
+
+
+          <p>
+            Any time disciplinary action is being
+            taken or considered with an Employee,
+            a Steward will be present regardless
+            of whether requested by the Employee or not.
           </p>
 
         </div>
 
       </details>
+
 
     </div>
 
@@ -680,12 +939,17 @@
 
 <!-- =========================================
      ARTICLE 18
+     OVERTIME
      ========================================= -->
 
-<section class="contract-section contract-item"
-         data-search="overtime equalization vacancy classification article 18">
+<section
+  id="article18"
+  class="contract-section contract-item"
+  data-search="article 18 overtime overtime equalization equal equally classification accurate records overtime offered vacancy off going on coming day off line classification review"
+>
 
   <div class="wrap">
+
 
     <div class="contract-heading">
 
@@ -701,53 +965,80 @@
 
       </div>
 
+
       <span class="contract-tag">
-        WORK HOURS
+        DISTRIBUTION & RECORDS
       </span>
 
     </div>
 
 
+
     <div class="contract-panel">
 
-      <div class="member-guide"
-           id="article18-guide">
+
+      <div
+        class="member-guide"
+        id="article18-guide"
+      >
 
         <span class="guide-label">
-          MEMBER QUICK GUIDE
+          MEMBER GUIDE
         </span>
 
+
         <h3>
-          Overtime Distribution
+          Overtime is subject to equalization,
+          recordkeeping and an offer sequence.
         </h3>
 
-        <p>
-          The agreement provides that overtime should be
-          distributed as equally as possible among employees
-          of the same classification.
-        </p>
 
         <p>
-          The Company is required to maintain accurate records
-          of overtime offered.
+          Article 18 states that overtime hours
+          will be distributed as equally as possible
+          among Employees of the same classification.
         </p>
 
+
         <p>
-          The Company and Union may periodically review
-          those overtime records.
+          The Company is required to keep accurate
+          records of overtime offered.
+        </p>
+
+
+        <p>
+          Either the Company or the Union may request
+          periodic meetings to review the overtime record.
+        </p>
+
+
+        <p>
+          The agreement also establishes the order
+          in which overtime is offered when vacancies
+          need to be filled.
+        </p>
+
+
+        <p>
+          For vacancies of more than four hours,
+          the initial steps focus on Employees in
+          the same job classification and on the
+          same line, including off-going and
+          on-coming shifts.
         </p>
 
       </div>
 
 
+
       <div class="read-controls">
 
         <button onclick="readText('article18-guide')">
-          🔊 READ GUIDE
+          🔊 READ MEMBER GUIDE
         </button>
 
-        <button onclick="readText('article18-contract')">
-          🔊 READ CONTRACT
+        <button onclick="readText('article18-language')">
+          🔊 READ CONTRACT LANGUAGE
         </button>
 
         <button onclick="stopReading()">
@@ -757,39 +1048,67 @@
       </div>
 
 
+
       <details>
 
         <summary>
-          READ CONTRACT LANGUAGE
+          READ KEY CONTRACT LANGUAGE
         </summary>
 
-        <div class="contract-language"
-             id="article18-contract">
+
+        <div
+          class="contract-language"
+          id="article18-language"
+        >
 
           <p>
-            Hours of overtime will be distributed as equally
-            as possible among Employees of the same
-            classification.
+            <strong>
+              Section 1
+            </strong>
           </p>
 
-          <p>
-            Accurate records of overtime offered will be kept.
-          </p>
 
           <p>
-            The Company and the Union will hold meetings
-            periodically at the request of either party to
-            review the overtime record.
+            Hours of overtime will be distributed
+            as equally as possible among Employees
+            of the same classification.
           </p>
 
+
           <p>
-            Equalization is limited to assigning priority for
-            future overtime when overtime becomes available.
+            Accurate records of overtime offered
+            will be kept.
+          </p>
+
+
+          <p>
+            The Company and the Union will hold
+            meetings periodically at the request
+            of either to review the overtime record.
+          </p>
+
+
+          <p>
+            There will be no make-work to equalize
+            overtime. Equalization is limited to
+            assigning priority for future overtime
+            when it becomes available.
+          </p>
+
+
+          <p>
+            For a vacancy of more than four hours,
+            the Article establishes a sequence
+            beginning with Employees possessing
+            the same job classification on the
+            same line on the off-going and
+            on-coming shifts.
           </p>
 
         </div>
 
       </details>
+
 
     </div>
 
@@ -800,7 +1119,7 @@
 
 
 <!-- =========================================
-     DISCLAIMER
+     CONTRACT NOTICE
      ========================================= -->
 
 <section class="contract-notice">
@@ -808,14 +1127,17 @@
   <div class="wrap">
 
     <h2>
-      CONTRACT LANGUAGE CONTROLS.
+      THE CONTRACT COMES FIRST.
     </h2>
 
+
     <p>
-      Member Quick Guides are provided for general
-      informational purposes only. They do not replace,
-      modify or amend the Collective Bargaining Agreement.
-      When questions arise, consult the actual agreement
+      Member Guides are informational summaries
+      designed to make the agreement easier to navigate.
+      They do not replace, change or amend the
+      collective bargaining agreement.
+      When there is any question about meaning
+      or application, refer to the actual agreement
       and contact Union representation.
     </p>
 
@@ -824,9 +1146,14 @@
 </section>
 
 
+
 </main>
 
 
+
+<!-- =========================================
+     FOOTER
+     ========================================= -->
 
 <footer>
 
@@ -836,13 +1163,14 @@
       LOCAL 41 • KANSAS CITY
     </b>
 
+
     <span>
       Our Plant. Our People. Our Voice.
     </span>
 
+
     <small>
-      Member Guides are informational.
-      The collective bargaining agreement controls.
+      This site is an informational member resource.
     </small>
 
   </div>
@@ -850,7 +1178,6 @@
 </footer>
 
 
-<script src="script.js"></script>
-
 </body>
+
 </html>
