@@ -1150,3 +1150,267 @@ footer small {
     display: none;
   }
 }
+/* =========================================
+   KNOW YOUR CONTRACT
+   ========================================= */
+
+.contract-hero {
+  background: #111;
+  color: white;
+  padding: 80px 0 70px;
+  border-bottom: 8px solid var(--gold);
+}
+
+.contract-hero h1 {
+  font-size: clamp(50px, 8vw, 88px);
+  line-height: .9;
+  letter-spacing: -5px;
+  margin: 15px 0 22px;
+}
+
+.contract-hero h1 em {
+  color: var(--gold);
+  font-style: normal;
+}
+
+.contract-lead {
+  color: #d2d2d2;
+  font-size: 18px;
+  line-height: 1.6;
+  max-width: 700px;
+}
+
+
+/* SEARCH */
+
+.contract-search-section {
+  background: var(--gold);
+  padding: 35px 0;
+}
+
+.contract-search-section label {
+  display: block;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.contract-search-section input {
+  width: 100%;
+  padding: 18px;
+  border: 2px solid #111;
+  background: white;
+  font-size: 16px;
+}
+
+.topic-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 15px;
+}
+
+.topic-links button {
+  border: 1px solid #111;
+  background: transparent;
+  padding: 9px 12px;
+  font-size: 10px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.topic-links button:hover {
+  background: #111;
+  color: white;
+}
+
+
+/* CONTRACT SECTIONS */
+
+.contract-section {
+  background: white;
+  padding: 65px 0;
+}
+
+.contract-section.alt {
+  background: var(--paper);
+}
+
+.contract-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.article-number {
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  margin: 0;
+}
+
+.contract-heading h2 {
+  font-size: 36px;
+  margin: 8px 0 0;
+}
+
+.contract-tag {
+  background: #111;
+  color: white;
+  padding: 9px 12px;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.contract-panel {
+  border: 2px solid #111;
+}
+
+.member-guide {
+  padding: 30px;
+}
+
+.guide-label {
+  color: #765c0b;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.member-guide h3 {
+  font-size: 27px;
+  margin: 10px 0 14px;
+}
+
+.member-guide p {
+  color: #5e5e5e;
+  line-height: 1.6;
+  max-width: 850px;
+}
+
+
+/* READ ALOUD */
+
+.read-controls {
+  background: #111;
+  padding: 15px 30px;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.read-controls button {
+  background: transparent;
+  color: white;
+  border: 1px solid #777;
+  padding: 10px 12px;
+  font-size: 10px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.read-controls button:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+
+/* EXPAND CONTRACT */
+
+.contract-panel details {
+  border-top: 2px solid #111;
+}
+
+.contract-panel summary {
+  cursor: pointer;
+  padding: 20px 30px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+}
+
+.contract-panel summary:hover {
+  background: var(--gold);
+}
+
+.contract-language {
+  background: #f8f8f8;
+  padding: 10px 30px 30px;
+}
+
+.contract-language p {
+  max-width: 850px;
+  line-height: 1.7;
+}
+
+
+/* NOTICE */
+
+.contract-notice {
+  background: var(--gold);
+  padding: 50px 0;
+}
+
+.contract-notice h2 {
+  font-size: 30px;
+  margin: 0 0 12px;
+}
+
+.contract-notice p {
+  max-width: 800px;
+  line-height: 1.6;
+}
+
+
+/* CONTRACT MOBILE */
+
+@media (max-width: 600px) {
+
+  .contract-hero {
+    padding: 55px 0;
+  }
+
+  .contract-hero h1 {
+    font-size: 49px;
+    letter-spacing: -3px;
+  }
+
+  .contract-heading {
+    display: block;
+  }
+
+  .contract-heading h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+  }
+
+  .contract-tag {
+    display: inline-block;
+  }
+
+  .member-guide {
+    padding: 23px;
+  }
+
+  .read-controls {
+    padding: 15px 23px;
+  }
+
+  .read-controls button {
+    width: 100%;
+  }
+
+  .contract-panel summary {
+    padding: 18px 23px;
+  }
+
+  .contract-language {
+    padding: 5px 23px 25px;
+  }
+}
