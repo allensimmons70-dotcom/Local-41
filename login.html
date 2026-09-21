@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <meta name="viewport"
+        content="width=device-width,initial-scale=1">
+
+  <meta name="theme-color"
+        content="#111111">
+
+
+  <title>
+    Member Login | Local 41 KC
+  </title>
+
+
+  <meta name="description"
+        content="Secure Local 41 Kansas City member portal login and access request.">
+
+
+  <link rel="stylesheet"
+        href="style.css">
+
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+  </script>
+
+
+  <script src="supabase.js"
+          defer>
+  </script>
+
+
+  <script src="auth.js"
+          defer>
+  </script>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     HEADER
+     ========================================= -->
+
+<header class="top">
+
+  <div class="wrap nav">
+
+    <a class="brand"
+       href="index.html">
+
+      <span>LOCAL</span>
+      <b>41</b>
+
+      <small>
+        KANSAS CITY
+      </small>
+
+    </a>
+
+
+    <nav class="nav-links">
+
+      <a href="index.html">
+        HOME
+      </a>
+
+      <a href="contract.html">
+        CONTRACT
+      </a>
+
+      <a href="grievance.html">
+        GRIEVANCES
+      </a>
+
+      <a href="resources.html">
+        RESOURCES
+      </a>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+<main>
+
+
+<!-- =========================================
+     LOGIN HERO
+     ========================================= -->
+
+<section class="contract-hero">
+
+  <div class="wrap">
+
+    <p class="eyebrow">
+      LOCAL 41 SECURE MEMBER PORTAL
+    </p>
+
+
+    <h1>
+      MEMBER
+      <em>LOGIN.</em>
+    </h1>
+
+
+    <p class="contract-lead">
+
+      Secure access for verified
+      Local 41 members and authorized
+      Union representatives.
+
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================
+     AUTH AREA
+     ========================================= -->
+
+<section class="auth-section">
+
+  <div class="wrap">
+
+
+    <div
+      id="authMessage"
+      class="auth-message"
+      aria-live="polite">
+    </div>
+
+
+
+    <div class="auth-grid">
+
+
+      <!-- =====================================
+           LOGIN
+           ===================================== -->
+
+      <div class="auth-card">
+
+
+        <p class="article-number">
+          EXISTING MEMBERS
+        </p>
+
+
+        <h2>
+          SIGN IN
+        </h2>
+
+
+        <p class="auth-intro">
+
+          Access your member dashboard,
+          grievance requests and private
+          member resources.
+
+        </p>
+
+
+
+        <form
+          onsubmit="memberLogin(event)"
+          class="auth-form">
+
+
+          <label for="loginEmail">
+            EMAIL ADDRESS
+          </label>
+
+
+          <input
+            id="loginEmail"
+            type="email"
+            autocomplete="email"
+            required
+          >
+
+
+
+          <label for="loginPassword">
+            PASSWORD
+          </label>
+
+
+          <input
+            id="loginPassword"
+            type="password"
+            autocomplete="current-password"
+            required
+          >
+
+
+
+          <button
+            type="submit"
+            class="auth-submit">
+
+            MEMBER LOGIN →
+
+          </button>
+
+
+
+          <button
+            type="button"
+            class="auth-link-button"
+            onclick="resetPassword()">
+
+            FORGOT PASSWORD?
+
+          </button>
+
+
+        </form>
+
+      </div>
+
+
+
+      <!-- =====================================
+           REQUEST ACCESS
+           ===================================== -->
+
+      <div class="auth-card gold-card">
+
+
+        <p class="article-number">
+          FIRST TIME HERE?
+        </p>
+
+
+        <h2>
+          REQUEST ACCESS
+        </h2>
+
+
+        <p class="auth-intro">
+
+          Member access is limited to
+          verified Local 41 members.
+
+          Registration does not automatically
+          provide access. A Union administrator
+          must approve your account.
+
+        </p>
+
+
+
+        <form
+          id="registerForm"
+          onsubmit="requestAccess(event)"
+          class="auth-form">
+
+
+          <label for="registerName">
+            FULL NAME
+          </label>
+
+
+          <input
+            id="registerName"
+            type="text"
+            autocomplete="name"
+            required
+          >
+
+
+
+          <label for="registerEmployee">
+            EMPLOYEE NUMBER
+          </label>
+
+
+          <input
+            id="registerEmployee"
+            type="text"
+            autocomplete="off"
+            required
+          >
+
+
+
+          <label for="registerDepartment">
+            DEPARTMENT
+          </label>
+
+
+          <input
+            id="registerDepartment"
+            type="text"
+            autocomplete="organization-title"
+            required
+          >
+
+
+
+          <label for="registerShift">
+            SHIFT
+          </label>
+
+
+          <select
+            id="registerShift"
+            required>
+
+            <option value="">
+              SELECT SHIFT
+            </option>
+
+            <option value="1st Shift">
+              1ST SHIFT
+            </option>
+
+            <option value="2nd Shift">
+              2ND SHIFT
+            </option>
+
+            <option value="3rd Shift">
+              3RD SHIFT
+            </option>
+
+            <option value="12 Hour Days">
+              12 HOUR DAYS
+            </option>
+
+            <option value="12 Hour Nights">
+              12 HOUR NIGHTS
+            </option>
+
+            <option value="Other">
+              OTHER
+            </option>
+
+          </select>
+
+
+
+          <label for="registerEmail">
+            EMAIL ADDRESS
+          </label>
+
+
+          <input
+            id="registerEmail"
+            type="email"
+            autocomplete="email"
+            required
+          >
+
+
+
+          <label for="registerPassword">
+            CREATE PASSWORD
+          </label>
+
+
+          <input
+            id="registerPassword"
+            type="password"
+            autocomplete="new-password"
+            minlength="8"
+            required
+          >
+
+
+
+          <label for="registerConfirmPassword">
+            CONFIRM PASSWORD
+          </label>
+
+
+          <input
+            id="registerConfirmPassword"
+            type="password"
+            autocomplete="new-password"
+            minlength="8"
+            required
+          >
+
+
+
+          <button
+            type="submit"
+            class="auth-submit">
+
+            REQUEST MEMBER ACCESS →
+
+          </button>
+
+
+        </form>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================
+     SECURITY NOTICE
+     ========================================= -->
+
+<section class="contract-notice">
+
+  <div class="wrap">
+
+    <h2>
+      MEMBER INFORMATION STAYS PRIVATE.
+    </h2>
+
+
+    <p>
+
+      Access to private member tools
+      requires authentication and approval.
+
+      Do not share your password with
+      another member or Union representative.
+
+    </p>
+
+
+    <p>
+
+      Sensitive grievance and case information
+      will only be available through the
+      protected member system.
+
+    </p>
+
+  </div>
+
+</section>
+
+
+</main>
+
+
+
+<footer>
+
+  <div class="wrap">
+
+    <b>
+      LOCAL 41 • KANSAS CITY
+    </b>
+
+
+    <span>
+      Educate. Participate. Protect.
+    </span>
+
+
+    <small>
+      Secure Member Portal
+    </small>
+
+  </div>
+
+</footer>
+
+
+</body>
+
+</html>
