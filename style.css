@@ -1414,3 +1414,154 @@ footer small {
     padding: 5px 23px 25px;
   }
 }
+/* =========================================
+   MEMBER AUTH
+   ========================================= */
+
+.auth-section {
+  padding: 70px 0 90px;
+  background: var(--paper);
+}
+
+
+.auth-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+
+.auth-card {
+  background: white;
+  border: 2px solid #111;
+  border-top: 7px solid #111;
+  padding: 34px;
+}
+
+
+.auth-card.gold-card {
+  border-top-color: var(--gold);
+}
+
+
+.auth-card h2 {
+  font-size: 34px;
+  margin: 8px 0 12px;
+}
+
+
+.auth-intro {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.auth-form label {
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  margin: 15px 0 7px;
+}
+
+
+.auth-form input,
+.auth-form select {
+  width: 100%;
+  padding: 14px 15px;
+  border: 2px solid #ccc;
+  background: white;
+  font-size: 16px;
+}
+
+
+.auth-form input:focus,
+.auth-form select:focus {
+  border-color: var(--gold);
+  outline: none;
+}
+
+
+.auth-submit {
+  margin-top: 24px;
+  border: 0;
+  background: #111;
+  color: white;
+  padding: 16px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+
+.auth-submit:hover {
+  background: var(--gold);
+  color: #111;
+}
+
+
+.auth-link-button {
+  border: 0;
+  background: transparent;
+  color: #666;
+  font-size: 10px;
+  font-weight: 900;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+
+.auth-link-button:hover {
+  color: #111;
+}
+
+
+.auth-message {
+  display: none;
+  padding: 16px 18px;
+  margin-bottom: 22px;
+  border: 2px solid #111;
+  background: white;
+  line-height: 1.5;
+  font-weight: 700;
+}
+
+
+.auth-message:not(:empty) {
+  display: block;
+}
+
+
+.auth-message.success {
+  border-left: 8px solid #238636;
+}
+
+
+.auth-message.warning {
+  border-left: 8px solid var(--gold);
+}
+
+
+.auth-message.error {
+  border-left: 8px solid #b42318;
+}
+
+
+@media (max-width: 760px) {
+
+  .auth-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-card {
+    padding: 25px;
+  }
+
+}
