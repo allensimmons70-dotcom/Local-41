@@ -14,11 +14,11 @@
 
 
 const SUPABASE_URL =
-  "PASTE-YOUR-SUPABASE-URL-HERE";
+  https://umhrseavvbatgzmoeopv.supabase.co
 
 
 const SUPABASE_PUBLISHABLE_KEY =
-  "PASTE-YOUR-PUBLISHABLE-KEY-HERE";
+  sb_publishable_vbGT-SZgmNg1zTkPPMUycg_Y-wrwT0g
 
 
 const local41Supabase =
