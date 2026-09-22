@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <meta name="viewport"
+        content="width=device-width,initial-scale=1">
+
+  <meta name="theme-color"
+        content="#111111">
+
+
+  <title>
+    Admin Dashboard | Local 41 KC
+  </title>
+
+
+  <meta name="description"
+        content="Secure Local 41 Kansas City administrator dashboard.">
+
+
+  <link rel="stylesheet"
+        href="style.css">
+
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+  </script>
+
+
+  <script src="supabase.js"
+          defer>
+  </script>
+
+
+  <script src="admin.js"
+          defer>
+  </script>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     HEADER
+     ========================================= -->
+
+<header class="top">
+
+  <div class="wrap nav">
+
+    <a class="brand"
+       href="index.html">
+
+      <span>LOCAL</span>
+      <b>41</b>
+
+      <small>
+        KANSAS CITY
+      </small>
+
+    </a>
+
+
+    <nav class="nav-links">
+
+      <a href="index.html">
+        PUBLIC SITE
+      </a>
+
+      <a href="contract.html">
+        CONTRACT
+      </a>
+
+      <a href="grievance.html">
+        GRIEVANCES
+      </a>
+
+      <a href="resources.html">
+        RESOURCES
+      </a>
+
+      <button
+        class="admin-logout"
+        onclick="adminLogout()">
+
+        LOG OUT
+
+      </button>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+<main
+  id="adminDashboard"
+  class="admin-hidden">
+
+
+<!-- =========================================
+     ADMIN HERO
+     ========================================= -->
+
+<section class="admin-hero">
+
+  <div class="wrap">
+
+
+    <p class="eyebrow">
+      SECURE UNION ADMINISTRATION
+    </p>
+
+
+    <h1>
+      ADMIN
+      <em>DASHBOARD.</em>
+    </h1>
+
+
+    <p class="admin-lead">
+
+      Review member access requests,
+      manage the member portal and
+      prepare for secure grievance intake.
+
+    </p>
+
+
+    <div class="admin-user-line">
+
+      SIGNED IN AS:
+
+      <strong id="adminName">
+        VERIFYING...
+      </strong>
+
+      <span id="adminRole">
+      </span>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================
+     STATUS MESSAGE
+     ========================================= -->
+
+<section class="admin-main">
+
+  <div class="wrap">
+
+
+    <div
+      id="adminMessage"
+      class="auth-message"
+      aria-live="polite">
+    </div>
+
+
+
+<!-- =========================================
+     SUMMARY
+     ========================================= -->
+
+    <section class="admin-summary">
+
+
+      <article>
+
+        <span>
+          PENDING
+        </span>
+
+        <strong id="pendingCount">
+          —
+        </strong>
+
+        <small>
+          Access Requests
+        </small>
+
+      </article>
+
+
+
+      <article>
+
+        <span>
+          ACTIVE
+        </span>
+
+        <strong id="activeCount">
+          —
+        </strong>
+
+        <small>
+          Approved Members
+        </small>
+
+      </article>
+
+
+
+      <article>
+
+        <span>
+          DENIED
+        </span>
+
+        <strong id="deniedCount">
+          —
+        </strong>
+
+        <small>
+          Access Requests
+        </small>
+
+      </article>
+
+
+
+      <article>
+
+        <span>
+          TOTAL
+        </span>
+
+        <strong id="totalCount">
+          —
+        </strong>
+
+        <small>
+          Portal Accounts
+        </small>
+
+      </article>
+
+
+    </section>
+
+
+
+<!-- =========================================
+     PENDING MEMBERS
+     ========================================= -->
+
+    <section class="admin-panel">
+
+
+      <div class="admin-panel-heading">
+
+        <div>
+
+          <p class="article-number">
+            MEMBER ACCESS
+          </p>
+
+          <h2>
+            PENDING REQUESTS
+          </h2>
+
+        </div>
+
+
+        <button
+          class="admin-refresh"
+          onclick="loadAdminDashboard()">
+
+          REFRESH
+
+        </button>
+
+      </div>
+
+
+
+      <p class="admin-panel-intro">
+
+        Confirm that each applicant is a Local 41
+        member before approving portal access.
+
+      </p>
+
+
+
+      <div
+        id="pendingMembers"
+        class="member-request-list">
+
+
+        <div class="admin-loading">
+          Loading member requests...
+        </div>
+
+
+      </div>
+
+
+    </section>
+
+
+
+<!-- =========================================
+     NEXT ADMIN TOOLS
+     ========================================= -->
+
+    <section class="admin-next">
+
+
+      <p class="article-number">
+        BUILDING NEXT
+      </p>
+
+
+      <h2>
+        UNION CASE MANAGEMENT
+      </h2>
+
+
+      <div class="cards">
+
+
+        <article>
+
+          <div class="num">
+            01
+          </div>
+
+          <h3>
+            Grievance Intake
+          </h3>
+
+          <p>
+            Review grievance requests submitted
+            by verified members.
+          </p>
+
+          <span class="soon">
+            NEXT BUILD
+          </span>
+
+        </article>
+
+
+
+        <article>
+
+          <div class="num">
+            02
+          </div>
+
+          <h3>
+            Deadline Queue
+          </h3>
+
+          <p>
+            Track grievance dates and approaching
+            contractual deadlines.
+          </p>
+
+          <span class="soon">
+            COMING
+          </span>
+
+        </article>
+
+
+
+        <article>
+
+          <div class="num">
+            03
+          </div>
+
+          <h3>
+            Grievance Builder
+          </h3>
+
+          <p>
+            Turn member intake facts into
+            formal grievance drafts.
+          </p>
+
+          <span class="soon">
+            COMING
+          </span>
+
+        </article>
+
+
+
+        <article>
+
+          <div class="num">
+            04
+          </div>
+
+          <h3>
+            Member Management
+          </h3>
+
+          <p>
+            Manage member access, account status
+            and authorized administrators.
+          </p>
+
+          <span class="soon">
+            COMING
+          </span>
+
+        </article>
+
+
+      </div>
+
+
+    </section>
+
+
+  </div>
+
+</section>
+
+
+</main>
+
+
+
+<footer>
+
+  <div class="wrap">
+
+    <b>
+      LOCAL 41 • ADMIN PORTAL
+    </b>
+
+    <span>
+      Authorized Access Only
+    </span>
+
+    <small>
+      Secure Union Administration
+    </small>
+
+  </div>
+
+</footer>
+
+
+</body>
+
+</html>
