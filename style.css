@@ -2174,3 +2174,123 @@ footer small {
   }
 
 }
+/* =========================================
+   MEMBER EMAIL PREFERENCES
+   ========================================= */
+
+.member-email-card {
+  background: white;
+  border: 2px solid #111;
+  border-top: 7px solid var(--gold);
+  padding: 30px;
+  margin-bottom: 55px;
+}
+
+
+.member-email-card h2 {
+  font-size: 30px;
+  margin: 8px 0 10px;
+}
+
+
+.member-email-card p {
+  color: #666;
+  line-height: 1.6;
+  max-width: 760px;
+}
+
+
+.email-preference-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  border-top: 1px solid #ddd;
+  margin-top: 25px;
+  padding-top: 25px;
+}
+
+
+.email-preference-row strong {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+
+.email-preference-row span {
+  display: block;
+  color: #777;
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+
+.email-note {
+  display: block;
+  color: #777;
+  margin-top: 22px;
+  line-height: 1.5;
+}
+
+
+/* TOGGLE SWITCH */
+
+.email-switch {
+  position: relative;
+  display: inline-block;
+  width: 54px;
+  height: 30px;
+  flex-shrink: 0;
+}
+
+
+.email-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+
+.email-slider {
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+  background: #ccc;
+  border-radius: 30px;
+  transition: .2s;
+}
+
+
+.email-slider::before {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  left: 4px;
+  top: 4px;
+  background: white;
+  border-radius: 50%;
+  transition: .2s;
+}
+
+
+.email-switch input:checked
++ .email-slider {
+  background: var(--gold);
+}
+
+
+.email-switch input:checked
++ .email-slider::before {
+  transform: translateX(24px);
+}
+
+
+@media (max-width: 560px) {
+
+  .email-preference-row {
+    align-items: flex-start;
+  }
+
+}
