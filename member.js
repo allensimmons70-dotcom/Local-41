@@ -229,11 +229,75 @@ async function loadMemberDashboard() {
     .getElementById("memberDashboard")
     .classList
     .remove("admin-hidden");
-
+   
+   document
+  .getElementById("unionEmailUpdates")
+  .checked =
+    profile.union_email_updates !== false;
 }
 
 
+async function saveEmailPreference() {
 
+  const checkbox =
+    document.getElementById(
+      "unionEmailUpdates"
+    );
+
+
+  const receiveUpdates =
+    checkbox.checked;
+
+
+  showMemberMessage(
+    "Saving email preference..."
+  );
+
+
+  const {
+    error
+  } =
+    await local41Supabase
+      .rpc(
+        "update_email_preference",
+        {
+          receive_updates:
+            receiveUpdates
+        }
+      );
+
+
+  if (error) {
+
+    console.error(error);
+
+
+    checkbox.checked =
+      !receiveUpdates;
+
+
+    showMemberMessage(
+      "Unable to update email preference.",
+      "error"
+    );
+
+
+    return;
+
+  }
+
+
+  showMemberMessage(
+
+    receiveUpdates
+      ? "Email updates are turned on."
+      : "Email updates are turned off.",
+
+    "success"
+
+  );
+
+}
 /* =========================================
    LOGOUT
    ========================================= */
