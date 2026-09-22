@@ -74,15 +74,16 @@ async function loadMemberDashboard() {
     await local41Supabase
       .from("profiles")
       .select(`
-        id,
-        full_name,
-        email,
-        employee_number,
-        department,
-        shift,
-        role,
-        account_status
-      `)
+  id,
+  full_name,
+  email,
+  employee_number,
+  department,
+  shift,
+  role,
+  account_status,
+  union_email_updates
+`)
       .eq(
         "id",
         user.id
