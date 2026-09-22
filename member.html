@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <meta name="viewport"
+        content="width=device-width,initial-scale=1">
+
+  <meta name="theme-color"
+        content="#111111">
+
+  <title>
+    Member Dashboard | Local 41 KC
+  </title>
+
+  <meta name="description"
+        content="Secure Local 41 Kansas City member dashboard.">
+
+  <link rel="stylesheet"
+        href="style.css">
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+  </script>
+
+  <script src="supabase.js"
+          defer>
+  </script>
+
+  <script src="member.js"
+          defer>
+  </script>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     HEADER
+     ========================================= -->
+
+<header class="top">
+
+  <div class="wrap nav">
+
+    <a class="brand"
+       href="index.html">
+
+      <span>LOCAL</span>
+      <b>41</b>
+
+      <small>
+        KANSAS CITY
+      </small>
+
+    </a>
+
+
+    <nav class="nav-links">
+
+      <a href="index.html">
+        PUBLIC SITE
+      </a>
+
+      <a href="contract.html">
+        CONTRACT
+      </a>
+
+      <a href="grievance.html">
+        GRIEVANCES
+      </a>
+
+      <a href="resources.html">
+        RESOURCES
+      </a>
+
+      <button
+        class="admin-logout"
+        onclick="memberLogout()">
+
+        LOG OUT
+
+      </button>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+<!-- =========================================
+     PROTECTED MEMBER AREA
+     ========================================= -->
+
+<main
+  id="memberDashboard"
+  class="admin-hidden">
+
+
+<!-- =========================================
+     MEMBER HERO
+     ========================================= -->
+
+<section class="member-hero">
+
+  <div class="wrap">
+
+    <p class="eyebrow">
+      LOCAL 41 MEMBER PORTAL
+    </p>
+
+
+    <h1>
+      WELCOME,
+      <em id="memberFirstName">
+        MEMBER.
+      </em>
+    </h1>
+
+
+    <p class="member-lead">
+
+      Your secure starting point for
+      Local 41 information, contract resources,
+      grievance tools and member services.
+
+    </p>
+
+
+    <div class="member-identity">
+
+      <span>
+        VERIFIED MEMBER
+      </span>
+
+      <strong id="memberName">
+        LOADING...
+      </strong>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================
+     MAIN DASHBOARD
+     ========================================= -->
+
+<section class="member-main">
+
+  <div class="wrap">
+
+
+    <div
+      id="memberMessage"
+      class="auth-message"
+      aria-live="polite">
+    </div>
+
+
+
+<!-- =========================================
+     MEMBER PROFILE
+     ========================================= -->
+
+    <section class="member-profile-card">
+
+      <div>
+
+        <p class="article-number">
+          MEMBER PROFILE
+        </p>
+
+        <h2 id="profileName">
+          LOADING...
+        </h2>
+
+      </div>
+
+
+      <div class="member-profile-grid">
+
+        <div>
+
+          <span>
+            EMPLOYEE #
+          </span>
+
+          <strong id="profileEmployee">
+            —
+          </strong>
+
+        </div>
+
+
+        <div>
+
+          <span>
+            DEPARTMENT
+          </span>
+
+          <strong id="profileDepartment">
+            —
+          </strong>
+
+        </div>
+
+
+        <div>
+
+          <span>
+            SHIFT
+          </span>
+
+          <strong id="profileShift">
+            —
+          </strong>
+
+        </div>
+
+
+        <div>
+
+          <span>
+            EMAIL
+          </span>
+
+          <strong id="profileEmail">
+            —
+          </strong>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+<!-- =========================================
+     MEMBER TOOLS
+     ========================================= -->
+
+    <section class="member-tools">
+
+      <p class="article-number">
+        MEMBER TOOLS
+      </p>
+
+      <h2>
+        WHAT DO YOU NEED?
+      </h2>
+
+
+      <div class="cards">
+
+
+        <!-- GRIEVANCE REQUEST -->
+
+        <article class="member-feature-card">
+
+          <div class="num">
+            01
+          </div>
+
+          <h3>
+            Submit a Grievance Request
+          </h3>
+
+          <p>
+            Report a potential contract violation
+            and provide the information your Union
+            representative needs to review the issue.
+          </p>
+
+          <span class="soon">
+            NEXT BUILD
+          </span>
+
+        </article>
+
+
+
+        <!-- MY CASES -->
+
+        <article>
+
+          <div class="num">
+            02
+          </div>
+
+          <h3>
+            My Grievances
+          </h3>
+
+          <p>
+            Track grievance requests,
+            case status and requests for
+            additional information.
+          </p>
+
+          <span class="soon">
+            COMING
+          </span>
+
+        </article>
+
+
+
+        <!-- CONTRACT -->
+
+        <article>
+
+          <div class="num">
+            03
+          </div>
+
+          <h3>
+            Know Your Contract
+          </h3>
+
+          <p>
+            Search contract topics,
+            read Member Guides and listen
+            to important contract information.
+          </p>
+
+          <a class="card-link"
+             href="contract.html">
+
+            OPEN CONTRACT CENTER →
+
+          </a>
+
+        </article>
+
+
+
+        <!-- RESOURCES -->
+
+        <article>
+
+          <div class="num">
+            04
+          </div>
+
+          <h3>
+            Member Resources
+          </h3>
+
+          <p>
+            Quickly access meetings,
+            workplace references and
+            Local 41 member tools.
+          </p>
+
+          <a class="card-link"
+             href="resources.html">
+
+            MEMBER RESOURCES →
+
+          </a>
+
+        </article>
+
+
+      </div>
+
+    </section>
+
+
+
+<!-- =========================================
+     QUICK LINKS
+     ========================================= -->
+
+    <section class="member-quick">
+
+      <p class="article-number">
+        QUICK ACCESS
+      </p>
+
+      <h2>
+        STAY INFORMED.
+      </h2>
+
+
+      <div class="member-quick-grid">
+
+
+        <a href="board.html">
+
+          <span>
+            UNION BOARD
+          </span>
+
+          <strong>
+            Announcements & Updates →
+          </strong>
+
+        </a>
+
+
+        <a href="index.html#meeting">
+
+          <span>
+            MEETINGS
+          </span>
+
+          <strong>
+            Meeting Information →
+          </strong>
+
+        </a>
+
+
+        <a href="grievance.html">
+
+          <span>
+            GRIEVANCE GUIDE
+          </span>
+
+          <strong>
+            Know the Process →
+          </strong>
+
+        </a>
+
+
+        <a href="contract.html">
+
+          <span>
+            CONTRACT
+          </span>
+
+          <strong>
+            Know Your Rights →
+          </strong>
+
+        </a>
+
+
+      </div>
+
+    </section>
+
+
+
+<!-- =========================================
+     PRIVATE PORTAL NOTICE
+     ========================================= -->
+
+    <section class="member-private-notice">
+
+      <strong>
+        🔒 PRIVATE MEMBER PORTAL
+      </strong>
+
+      <p>
+        Your account is for your individual use.
+        Do not share your login credentials.
+        Sensitive grievance information should only
+        be submitted through protected member tools.
+      </p>
+
+    </section>
+
+
+  </div>
+
+</section>
+
+
+</main>
+
+
+
+<footer>
+
+  <div class="wrap">
+
+    <b>
+      LOCAL 41 • MEMBER PORTAL
+    </b>
+
+    <span>
+      Educate. Participate. Protect.
+    </span>
+
+    <small>
+      Verified Member Access
+    </small>
+
+  </div>
+
+</footer>
+
+
+</body>
+
+</html>
