@@ -1,1 +1,218 @@
+<!doctype html>
+<html lang="en">
 
+<head>
+
+  <meta charset="utf-8">
+
+  <meta name="viewport"
+        content="width=device-width,initial-scale=1">
+
+  <meta name="theme-color"
+        content="#111111">
+
+  <title>
+    My Grievances | Local 41 KC
+  </title>
+
+  <link rel="stylesheet"
+        href="style.css">
+
+  <link rel="stylesheet"
+        href="grievance-member.css">
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+  </script>
+
+  <script src="supabase.js"
+          defer>
+  </script>
+
+  <script src="my-grievances.js"
+          defer>
+  </script>
+
+</head>
+
+
+<body>
+
+
+<header class="top">
+
+  <div class="wrap nav">
+
+    <a class="brand"
+       href="member.html">
+
+      <span>LOCAL</span>
+      <b>41</b>
+
+      <small>
+        KANSAS CITY
+      </small>
+
+    </a>
+
+
+    <nav class="nav-links">
+
+      <a href="member.html">
+        MEMBER HOME
+      </a>
+
+      <a href="submit-grievance.html">
+        NEW REQUEST
+      </a>
+
+      <button
+        class="admin-logout"
+        onclick="memberLogout()">
+
+        LOG OUT
+
+      </button>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+<main
+  id="protectedPage"
+  class="admin-hidden">
+
+
+<section class="contract-hero">
+
+  <div class="wrap">
+
+    <p class="eyebrow">
+      SECURE MEMBER TOOL
+    </p>
+
+    <h1>
+      MY
+      <em>GRIEVANCES.</em>
+    </h1>
+
+    <p class="contract-lead">
+
+      View the grievance requests you submitted
+      and follow their current Union review status.
+
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<section class="grievance-shell">
+
+  <div class="wrap">
+
+
+    <a
+      class="portal-back"
+      href="member.html">
+
+      ← BACK TO MEMBER DASHBOARD
+
+    </a>
+
+
+    <div class="portal-actions">
+
+      <a
+        class="portal-action gold"
+        href="submit-grievance.html">
+
+        + SUBMIT NEW GRIEVANCE REQUEST
+
+      </a>
+
+    </div>
+
+
+    <div
+      id="pageMessage"
+      class="auth-message"
+      aria-live="polite">
+    </div>
+
+
+    <section class="grievance-panel">
+
+      <p class="article-number">
+        YOUR CASES
+      </p>
+
+      <h2 id="memberHeading">
+        GRIEVANCE REQUESTS
+      </h2>
+
+      <p class="grievance-help">
+
+        A submitted request is not automatically
+        a formally filed grievance.
+
+        Your Union representative reviews the facts,
+        contract language and filing requirements.
+
+      </p>
+
+    </section>
+
+
+    <div
+      id="caseList"
+      class="case-list">
+
+      <div class="portal-empty">
+
+        Loading your grievance requests...
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+</main>
+
+
+
+<footer>
+
+  <div class="wrap">
+
+    <b>
+      LOCAL 41 • MEMBER PORTAL
+    </b>
+
+    <span>
+      Educate. Participate. Protect.
+    </span>
+
+    <small>
+      Private Case Status
+    </small>
+
+  </div>
+
+</footer>
+
+
+</body>
+
+</html>
