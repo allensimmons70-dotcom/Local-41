@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <meta name="viewport"
+        content="width=device-width,initial-scale=1">
+
+  <meta name="theme-color"
+        content="#111111">
+
+  <title>
+    Grievance Intake | Local 41 Admin
+  </title>
+
+  <meta name="description"
+        content="Secure Local 41 grievance administration.">
+
+  <link rel="stylesheet"
+        href="style.css">
+
+  <link rel="stylesheet"
+        href="grievance-member.css">
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+  </script>
+
+  <script src="supabase.js"
+          defer>
+  </script>
+
+  <script src="admin-grievances.js"
+          defer>
+  </script>
+
+</head>
+
+
+<body>
+
+
+<header class="top">
+
+  <div class="wrap nav">
+
+    <a class="brand"
+       href="admin.html">
+
+      <span>LOCAL</span>
+      <b>41</b>
+
+      <small>
+        KANSAS CITY
+      </small>
+
+    </a>
+
+
+    <nav class="nav-links">
+
+      <a href="admin.html">
+        ADMIN HOME
+      </a>
+
+      <a href="admin-grievances.html">
+        GRIEVANCES
+      </a>
+
+      <a href="contract.html">
+        CONTRACT
+      </a>
+
+      <button
+        class="admin-logout"
+        onclick="adminLogout()">
+
+        LOG OUT
+
+      </button>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+<main
+  id="adminGrievancePage"
+  class="admin-hidden">
+
+
+<section class="admin-hero">
+
+  <div class="wrap">
+
+    <p class="eyebrow">
+      SECURE UNION CASE MANAGEMENT
+    </p>
+
+    <h1>
+      GRIEVANCE
+      <em>INTAKE.</em>
+    </h1>
+
+    <p class="admin-lead">
+
+      Review grievance requests submitted
+      by verified Local 41 members.
+
+    </p>
+
+
+    <div class="admin-user-line">
+
+      SIGNED IN AS:
+
+      <strong id="adminName">
+        VERIFYING...
+      </strong>
+
+      <span id="adminRole">
+      </span>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<section class="admin-main">
+
+  <div class="wrap">
+
+
+    <a
+      class="portal-back"
+      href="admin.html">
+
+      ← BACK TO ADMIN DASHBOARD
+
+    </a>
+
+
+    <div
+      id="adminGrievanceMessage"
+      class="auth-message"
+      aria-live="polite">
+    </div>
+
+
+
+    <section class="admin-summary">
+
+      <article>
+
+        <span>
+          NEW
+        </span>
+
+        <strong id="newCaseCount">
+          —
+        </strong>
+
+        <small>
+          Submitted
+        </small>
+
+      </article>
+
+
+      <article>
+
+        <span>
+          UNDER REVIEW
+        </span>
+
+        <strong id="reviewCaseCount">
+          —
+        </strong>
+
+        <small>
+          Active Review
+        </small>
+
+      </article>
+
+
+      <article>
+
+        <span>
+          FILED
+        </span>
+
+        <strong id="filedCaseCount">
+          —
+        </strong>
+
+        <small>
+          Filed Cases
+        </small>
+
+      </article>
+
+
+      <article>
+
+        <span>
+          TOTAL
+        </span>
+
+        <strong id="totalCaseCount">
+          —
+        </strong>
+
+        <small>
+          Grievance Requests
+        </small>
+
+      </article>
+
+    </section>
+
+
+
+    <section class="admin-panel">
+
+
+      <div class="admin-panel-heading">
+
+        <div>
+
+          <p class="article-number">
+            MEMBER REQUESTS
+          </p>
+
+          <h2>
+            GRIEVANCE QUEUE
+          </h2>
+
+        </div>
+
+
+        <button
+          class="admin-refresh"
+          onclick="loadAdminGrievances()">
+
+          REFRESH
+
+        </button>
+
+      </div>
+
+
+      <p class="admin-panel-intro">
+
+        Review each member submission,
+        confirm the facts and determine
+        the appropriate Union response.
+
+      </p>
+
+
+      <div
+        id="grievanceQueue"
+        class="member-request-list">
+
+        <div class="admin-loading">
+
+          Loading grievance requests...
+
+        </div>
+
+      </div>
+
+
+    </section>
+
+
+  </div>
+
+</section>
+
+
+</main>
+
+
+
+<footer>
+
+  <div class="wrap">
+
+    <b>
+      LOCAL 41 • ADMIN PORTAL
+    </b>
+
+    <span>
+      Authorized Union Access Only
+    </span>
+
+    <small>
+      Secure Grievance Administration
+    </small>
+
+  </div>
+
+</footer>
+
+
+</body>
+
+</html>
