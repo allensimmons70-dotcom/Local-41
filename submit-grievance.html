@@ -1,50 +1,542 @@
-LOCAL41KANSAS CITY
-MEMBER HOMEMY GRIEVANCESLOG OUT
-SECURE MEMBER TOOL
+<!doctype html>
+<html lang="en">
 
-SUBMIT A GRIEVANCE REQUEST.
-Tell your Union what happened. You do not need to write the formal grievance yourself. A Union representative will review the facts and determine the appropriate contract language.
+<head>
 
-← BACK TO MEMBER DASHBOARD
-YOUR INFORMATION
+  <meta charset="utf-8">
 
-VERIFYING MEMBER...
-01 • INCIDENT
+  <meta name="viewport"
+        content="width=device-width,initial-scale=1">
 
-WHAT HAPPENED?
-DATE OF INCIDENT *
-mm/dd/yyyy
-TIME
---:-- --
-LOCATION / DEPARTMENT
-Example: K-22 Line
-SUPERVISOR / MANAGER INVOLVED
-YOUR JOB / CLASSIFICATION
-Select the incident date to see the 14-calendar-day Article 12 timing reminder.
-02 • CONTRACT
+  <meta name="theme-color"
+        content="#111111">
 
-WHAT PART OF THE CONTRACT MAY APPLY?
-CONTRACT ARTICLE *
-I'M NOT SURE — UNION REVIEW NEEDED
-Your selection does not limit the Union. A representative may add or change the contract theory after review.
-03 • FACTS
+  <title>
+    Submit Grievance Request | Local 41 KC
+  </title>
 
-TELL US THE STORY.
-WHAT HAPPENED? *
-Tell the story in order. Include who did what, what was said, what happened next, and any dates or times you remember.
-WHY DO YOU THINK THIS VIOLATED THE CONTRACT?
-It is okay if you are unsure. Explain why the situation did not seem right or fair under the contract.
-DID YOU SPEAK WITH A SUPERVISOR OR MANAGER?
-Who did you speak with, when, and what response did you receive?
-WITNESSES
-List each witness and what they personally saw or heard.
-04 • EVIDENCE & REMEDY
+  <link rel="stylesheet"
+        href="style.css">
 
-WHAT SUPPORTS YOUR REQUEST?
-DOCUMENTS / EVIDENCE YOU HAVE
-Examples: attendance screenshot, discipline letter, schedule, bid sheet, overtime record, email, text, photo. Do not upload medical records here.
-WHAT WOULD MAKE THIS RIGHT?
-Examples: remove points, remove discipline, back pay, job placement, qualification, overtime make-whole, cease and desist, or Union to determine.
-BEST WAY TO CONTACT YOU
-Example: email, phone number, or speak with me at work
-I certify that the information I submitted is accurate to the best of my knowledge. I understand this is a request for Union review, not the formal grievance itself. SUBMIT GRIEVANCE REQUEST →
+  <link rel="stylesheet"
+        href="grievance-member.css">
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+  </script>
+
+  <script src="supabase.js"
+          defer>
+  </script>
+
+  <script src="submit-grievance.js"
+          defer>
+  </script>
+
+</head>
+
+
+<body>
+
+
+<header class="top">
+
+  <div class="wrap nav">
+
+    <a class="brand"
+       href="member.html">
+
+      <span>LOCAL</span>
+      <b>41</b>
+
+      <small>
+        KANSAS CITY
+      </small>
+
+    </a>
+
+
+    <nav class="nav-links">
+
+      <a href="member.html">
+        MEMBER HOME
+      </a>
+
+      <a href="my-grievances.html">
+        MY GRIEVANCES
+      </a>
+
+      <button
+        class="admin-logout"
+        onclick="memberLogout()">
+
+        LOG OUT
+
+      </button>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+<main
+  id="protectedPage"
+  class="admin-hidden">
+
+
+<section class="contract-hero">
+
+  <div class="wrap">
+
+    <p class="eyebrow">
+      SECURE MEMBER TOOL
+    </p>
+
+    <h1>
+      SUBMIT A
+      <em>GRIEVANCE REQUEST.</em>
+    </h1>
+
+    <p class="contract-lead">
+
+      Tell your Union what happened.
+
+      You do not need to write the formal
+      grievance yourself.
+
+      A Union representative will review
+      the facts and determine the appropriate
+      contract language.
+
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<section class="grievance-shell">
+
+  <div class="wrap">
+
+
+    <a
+      class="portal-back"
+      href="member.html">
+
+      ← BACK TO MEMBER DASHBOARD
+
+    </a>
+
+
+    <div
+      id="pageMessage"
+      class="auth-message"
+      aria-live="polite">
+    </div>
+
+
+
+    <section class="grievance-panel">
+
+      <p class="article-number">
+        YOUR INFORMATION
+      </p>
+
+      <h2 id="memberDisplayName">
+        VERIFYING MEMBER...
+      </h2>
+
+      <p
+        id="memberDisplayDetails"
+        class="grievance-help">
+      </p>
+
+    </section>
+
+
+
+    <form
+      id="grievanceForm"
+      onsubmit="submitGrievance(event)">
+
+
+      <section class="grievance-panel">
+
+        <p class="article-number">
+          01 • INCIDENT
+        </p>
+
+        <h2>
+          WHAT HAPPENED?
+        </h2>
+
+
+        <div class="grievance-grid">
+
+
+          <div class="grievance-field">
+
+            <label for="incidentDate">
+              DATE OF INCIDENT *
+            </label>
+
+            <input
+              id="incidentDate"
+              type="date"
+              required
+              onchange="updateDeadlineNotice()"
+            >
+
+          </div>
+
+
+          <div class="grievance-field">
+
+            <label for="incidentTime">
+              TIME
+            </label>
+
+            <input
+              id="incidentTime"
+              type="time"
+            >
+
+          </div>
+
+
+          <div class="grievance-field">
+
+            <label for="incidentLocation">
+              LOCATION / DEPARTMENT
+            </label>
+
+            <input
+              id="incidentLocation"
+              type="text"
+              placeholder="Example: K-22 Line"
+            >
+
+          </div>
+
+
+          <div class="grievance-field">
+
+            <label for="supervisorManager">
+              SUPERVISOR / MANAGER INVOLVED
+            </label>
+
+            <input
+              id="supervisorManager"
+              type="text"
+            >
+
+          </div>
+
+
+          <div class="grievance-field full">
+
+            <label for="classificationJob">
+              YOUR JOB / CLASSIFICATION
+            </label>
+
+            <input
+              id="classificationJob"
+              type="text"
+            >
+
+          </div>
+
+
+        </div>
+
+
+        <div
+          id="deadlineNotice"
+          class="deadline-box">
+
+          Select the incident date to see
+          the 14-calendar-day Article 12
+          timing reminder.
+
+        </div>
+
+      </section>
+
+
+
+      <section class="grievance-panel">
+
+        <p class="article-number">
+          02 • CONTRACT
+        </p>
+
+        <h2>
+          WHAT PART OF THE CONTRACT MAY APPLY?
+        </h2>
+
+
+        <div class="grievance-field">
+
+          <label for="contractArticle">
+            CONTRACT ARTICLE *
+          </label>
+
+          <select
+            id="contractArticle"
+            required>
+
+            <option value="I am not sure">
+              I'M NOT SURE — UNION REVIEW NEEDED
+            </option>
+
+            <option value="Article 6 - Attendance">
+              ARTICLE 6 — ATTENDANCE
+            </option>
+
+            <option value="Article 8 - Seniority / Bidding / Training">
+              ARTICLE 8 — SENIORITY / BIDDING / TRAINING
+            </option>
+
+            <option value="Article 12 - Grievance Procedure">
+              ARTICLE 12 — GRIEVANCE PROCEDURE
+            </option>
+
+            <option value="Article 13 - Discipline / Discharge">
+              ARTICLE 13 — DISCIPLINE / DISCHARGE
+            </option>
+
+            <option value="Article 18 - Overtime">
+              ARTICLE 18 — OVERTIME
+            </option>
+
+            <option value="Other">
+              OTHER / DIFFERENT ARTICLE
+            </option>
+
+          </select>
+
+
+          <span class="grievance-help">
+
+            Your selection does not limit
+            the Union.
+
+            A representative may add or change
+            the contract theory after review.
+
+          </span>
+
+        </div>
+
+      </section>
+
+
+
+      <section class="grievance-panel">
+
+        <p class="article-number">
+          03 • FACTS
+        </p>
+
+        <h2>
+          TELL US THE STORY.
+        </h2>
+
+
+        <div class="grievance-grid">
+
+
+          <div class="grievance-field full">
+
+            <label for="facts">
+              WHAT HAPPENED? *
+            </label>
+
+            <textarea
+              id="facts"
+              required
+              placeholder="Tell the story in order. Include who did what, what was said, what happened next, and any dates or times you remember."></textarea>
+
+          </div>
+
+
+          <div class="grievance-field full">
+
+            <label for="whyViolation">
+              WHY DO YOU THINK THIS VIOLATED THE CONTRACT?
+            </label>
+
+            <textarea
+              id="whyViolation"
+              placeholder="It is okay if you are unsure. Explain why the situation did not seem right or fair under the contract."></textarea>
+
+          </div>
+
+
+          <div class="grievance-field full">
+
+            <label for="priorDiscussion">
+              DID YOU SPEAK WITH A SUPERVISOR OR MANAGER?
+            </label>
+
+            <textarea
+              id="priorDiscussion"
+              placeholder="Who did you speak with, when, and what response did you receive?"></textarea>
+
+          </div>
+
+
+          <div class="grievance-field full">
+
+            <label for="witnesses">
+              WITNESSES
+            </label>
+
+            <textarea
+              id="witnesses"
+              placeholder="List each witness and what they personally saw or heard."></textarea>
+
+          </div>
+
+
+        </div>
+
+      </section>
+
+
+
+      <section class="grievance-panel">
+
+        <p class="article-number">
+          04 • EVIDENCE & REMEDY
+        </p>
+
+        <h2>
+          WHAT SUPPORTS YOUR REQUEST?
+        </h2>
+
+
+        <div class="grievance-grid">
+
+
+          <div class="grievance-field full">
+
+            <label for="evidenceDescription">
+              DOCUMENTS / EVIDENCE YOU HAVE
+            </label>
+
+            <textarea
+              id="evidenceDescription"
+              placeholder="Examples: attendance screenshot, discipline letter, schedule, bid sheet, overtime record, email, text, photo. Do not upload medical records here."></textarea>
+
+          </div>
+
+
+          <div class="grievance-field full">
+
+            <label for="requestedRemedy">
+              WHAT WOULD MAKE THIS RIGHT?
+            </label>
+
+            <textarea
+              id="requestedRemedy"
+              placeholder="Examples: remove points, remove discipline, back pay, job placement, qualification, overtime make-whole, cease and desist, or Union to determine."></textarea>
+
+          </div>
+
+
+          <div class="grievance-field full">
+
+            <label for="preferredContact">
+              BEST WAY TO CONTACT YOU
+            </label>
+
+            <input
+              id="preferredContact"
+              type="text"
+              placeholder="Example: email, phone number, or speak with me at work"
+            >
+
+          </div>
+
+
+        </div>
+
+
+        <label class="certify-row">
+
+          <input
+            id="certifyAccuracy"
+            type="checkbox"
+            required
+          >
+
+          <span>
+
+            I certify that the information
+            I submitted is accurate to the
+            best of my knowledge.
+
+            I understand this is a request
+            for Union review, not the formal
+            grievance itself.
+
+          </span>
+
+        </label>
+
+
+        <button
+          id="submitButton"
+          class="grievance-submit"
+          type="submit">
+
+          SUBMIT GRIEVANCE REQUEST →
+
+        </button>
+
+
+      </section>
+
+
+    </form>
+
+
+  </div>
+
+</section>
+
+
+</main>
+
+
+
+<footer>
+
+  <div class="wrap">
+
+    <b>
+      LOCAL 41 • MEMBER PORTAL
+    </b>
+
+    <span>
+      Educate. Participate. Protect.
+    </span>
+
+    <small>
+      Secure Grievance Request
+    </small>
+
+  </div>
+
+</footer>
+
+
+</body>
+
+</html>
