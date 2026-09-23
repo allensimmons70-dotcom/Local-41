@@ -1,0 +1,101 @@
+-- =========================================================
+-- LOCAL 41 MEMBER GRIEVANCE REQUESTS
+-- Run this once in Supabase SQL Editor.
+-- =========================================================
+
+create sequence if not exists public.grievance_case_seq start 1;
+
+create table if not exists public.grievance_requests (
+  id uuid primary key default gen_random_uuid(),
+  case_number text unique,
+  member_id uuid not null references auth.users(id) on delete cascade,
+  status text not null default 'SUBMITTED'
+    check (status in (
+      'SUBMITTED','UNDER REVIEW','MORE INFO NEEDED','DRAFTING','FILED',
+      'STEP 1','STEP 2','ARBITRATION','RESOLVED','CLOSED'
+    )),
+  incident_date date not null,
+  incident_time time,
+  incident_location text,
+  supervisor_manager text,
+  classification_job text,
+  contract_article text not null default 'I am not sure',
+  facts text not null,
+  why_violation text,
+  prior_discussion text,
+  witnesses text,
+  evidence_description text,
+  requested_remedy text,
+  preferred_contact text,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+create or replace function public.assign_grievance_case_number()
+returns trigger
+language plpgsql
+set search_path = ''
+as $$
+begin
+  if new.case_number is null then
+    new.case_number := 'L41-' || to_char(now(), 'YYYY') || '-' ||
+      lpad(nextval('public.grievance_case_seq')::text, 4, '0');
+  end if;
+  return new;
+end;
+$$;
+
+drop trigger if exists set_grievance_case_number on public.grievance_requests;
+create trigger set_grievance_case_number
+before insert on public.grievance_requests
+for each row execute function public.assign_grievance_case_number();
+
+create or replace function public.touch_grievance_updated_at()
+returns trigger
+language plpgsql
+set search_path = ''
+as $$
+begin
+  new.updated_at := now();
+  return new;
+end;
+$$;
+
+drop trigger if exists touch_grievance_updated_at on public.grievance_requests;
+create trigger touch_grievance_updated_at
+before update on public.grievance_requests
+for each row execute function public.touch_grievance_updated_at();
+
+alter table public.grievance_requests enable row level security;
+
+revoke all on table public.grievance_requests from anon;
+revoke all on table public.grievance_requests from authenticated;
+grant select, insert, update on table public.grievance_requests to authenticated;
+
+drop policy if exists "Members can submit own grievance requests" on public.grievance_requests;
+create policy "Members can submit own grievance requests"
+on public.grievance_requests
+for insert to authenticated
+with check (
+  auth.uid() = member_id
+  and exists (
+    select 1 from public.profiles p
+    where p.id = auth.uid() and p.account_status = 'active'
+  )
+);
+
+drop policy if exists "Members can read own grievance requests" on public.grievance_requests;
+create policy "Members can read own grievance requests"
+on public.grievance_requests
+for select to authenticated
+using (auth.uid() = member_id or public.is_union_admin());
+
+drop policy if exists "Admins can update grievance requests" on public.grievance_requests;
+create policy "Admins can update grievance requests"
+on public.grievance_requests
+for update to authenticated
+using (public.is_union_admin())
+with check (public.is_union_admin());
+
+-- Members intentionally receive NO update/delete policy.
+-- Once submitted, the original request stays intact.
