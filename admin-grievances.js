@@ -757,11 +757,13 @@ function renderGrievanceQueue(
 
         <div class="request-actions">
 
-  <span class="case-next">
+  <a
+    class="portal-action"
+    href="admin-grievance-case.html?id=${encodeURIComponent(item.id)}">
 
-    FULL CASE VIEW NEXT
+    OPEN FULL CASE →
 
-  </span>
+  </a>
 
 </div>
 
