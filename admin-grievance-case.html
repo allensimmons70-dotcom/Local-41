@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <meta name="viewport"
+        content="width=device-width,initial-scale=1">
+
+  <meta name="theme-color"
+        content="#111111">
+
+  <title>
+    Grievance Case Review | Local 41 Admin
+  </title>
+
+  <link rel="stylesheet"
+        href="style.css">
+
+  <link rel="stylesheet"
+        href="grievance-member.css">
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+  </script>
+
+  <script src="supabase.js"
+          defer>
+  </script>
+
+  <script src="admin-grievance-case.js"
+          defer>
+  </script>
+
+</head>
+
+
+<body>
+
+
+<header class="top">
+
+  <div class="wrap nav">
+
+    <a class="brand"
+       href="admin.html">
+
+      <span>LOCAL</span>
+      <b>41</b>
+
+      <small>
+        KANSAS CITY
+      </small>
+
+    </a>
+
+
+    <nav class="nav-links">
+
+      <a href="admin.html">
+        ADMIN HOME
+      </a>
+
+      <a href="admin-grievances.html">
+        GRIEVANCES
+      </a>
+
+      <button
+        class="admin-logout"
+        onclick="adminLogout()">
+
+        LOG OUT
+
+      </button>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+<main
+  id="casePage"
+  class="admin-hidden">
+
+
+<section class="admin-hero">
+
+  <div class="wrap">
+
+    <p class="eyebrow">
+      SECURE UNION CASE MANAGEMENT
+    </p>
+
+    <h1>
+      CASE
+      <em>REVIEW.</em>
+    </h1>
+
+    <p class="admin-lead"
+       id="caseHero">
+
+      Loading grievance case...
+
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<section class="grievance-shell">
+
+  <div class="wrap">
+
+
+    <a
+      class="portal-back"
+      href="admin-grievances.html">
+
+      ← BACK TO GRIEVANCE QUEUE
+
+    </a>
+
+
+    <div
+      id="caseMessage"
+      class="auth-message"
+      aria-live="polite">
+    </div>
+
+
+
+    <section class="grievance-panel">
+
+      <p class="article-number">
+        CASE INFORMATION
+      </p>
+
+      <h2 id="caseNumber">
+        LOADING...
+      </h2>
+
+
+      <div class="case-meta">
+
+        <div>
+          <span>STATUS</span>
+          <strong id="caseStatus">—</strong>
+        </div>
+
+        <div>
+          <span>SUBMITTED</span>
+          <strong id="submittedDate">—</strong>
+        </div>
+
+        <div>
+          <span>CONTRACT</span>
+          <strong id="contractArticle">—</strong>
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <section class="grievance-panel">
+
+      <p class="article-number">
+        MEMBER
+      </p>
+
+      <h2 id="memberName">
+        MEMBER INFORMATION
+      </h2>
+
+
+      <div class="case-meta">
+
+        <div>
+          <span>EMPLOYEE #</span>
+          <strong id="employeeNumber">—</strong>
+        </div>
+
+        <div>
+          <span>DEPARTMENT</span>
+          <strong id="memberDepartment">—</strong>
+        </div>
+
+        <div>
+          <span>SHIFT</span>
+          <strong id="memberShift">—</strong>
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <section class="grievance-panel">
+
+      <p class="article-number">
+        INCIDENT
+      </p>
+
+      <div class="case-meta">
+
+        <div>
+          <span>DATE</span>
+          <strong id="incidentDate">—</strong>
+        </div>
+
+        <div>
+          <span>TIME</span>
+          <strong id="incidentTime">—</strong>
+        </div>
+
+        <div>
+          <span>LOCATION</span>
+          <strong id="incidentLocation">—</strong>
+        </div>
+
+      </div>
+
+
+      <div class="case-meta">
+
+        <div>
+          <span>SUPERVISOR / MANAGER</span>
+          <strong id="supervisorManager">—</strong>
+        </div>
+
+        <div>
+          <span>JOB / CLASSIFICATION</span>
+          <strong id="classificationJob">—</strong>
+        </div>
+
+        <div>
+          <span>PREFERRED CONTACT</span>
+          <strong id="preferredContact">—</strong>
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <section class="grievance-panel">
+
+      <p class="article-number">
+        MEMBER STATEMENT
+      </p>
+
+      <h3>WHAT HAPPENED?</h3>
+      <p class="case-summary"
+         id="facts">
+        —
+      </p>
+
+      <h3>WHY THE MEMBER BELIEVES THIS VIOLATES THE CONTRACT</h3>
+      <p class="case-summary"
+         id="whyViolation">
+        —
+      </p>
+
+      <h3>PRIOR DISCUSSION WITH MANAGEMENT</h3>
+      <p class="case-summary"
+         id="priorDiscussion">
+        —
+      </p>
+
+      <h3>WITNESSES</h3>
+      <p class="case-summary"
+         id="witnesses">
+        —
+      </p>
+
+    </section>
+
+
+
+    <section class="grievance-panel">
+
+      <p class="article-number">
+        EVIDENCE & REMEDY
+      </p>
+
+      <h3>EVIDENCE / DOCUMENTS</h3>
+      <p class="case-summary"
+         id="evidenceDescription">
+        —
+      </p>
+
+      <h3>REQUESTED REMEDY</h3>
+      <p class="case-summary"
+         id="requestedRemedy">
+        —
+      </p>
+
+      <h3>PREFERRED REPRESENTATIVE</h3>
+      <p class="case-summary"
+         id="preferredRep">
+        —
+      </p>
+
+      <h3>ASSIGNED REPRESENTATIVE</h3>
+      <p class="case-summary"
+         id="assignedRep">
+        —
+      </p>
+
+    </section>
+
+
+  </div>
+
+</section>
+
+
+</main>
+
+
+
+<footer>
+
+  <div class="wrap">
+
+    <b>
+      LOCAL 41 • ADMIN PORTAL
+    </b>
+
+    <span>
+      Authorized Union Access Only
+    </span>
+
+    <small>
+      Secure Case Review
+    </small>
+
+  </div>
+
+</footer>
+
+
+</body>
+
+</html>
