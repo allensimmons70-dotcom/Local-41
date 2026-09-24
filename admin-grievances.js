@@ -757,13 +757,13 @@ function renderGrievanceQueue(
 
         <div class="request-actions">
 
-          <span class="soon">
+  <span class="case-next">
 
-            FULL CASE VIEW NEXT
+    FULL CASE VIEW NEXT
 
-          </span>
+  </span>
 
-        </div>
+</div>
 
       `;
 
