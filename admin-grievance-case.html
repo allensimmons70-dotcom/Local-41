@@ -176,7 +176,90 @@
       </p>
 
       <h2 id="memberName">
-        MEMBER INFORMATION
+        <!-- =========================================
+     CASE MANAGEMENT
+     ========================================= -->
+
+<section class="grievance-panel">
+
+  <p class="article-number">
+    CASE MANAGEMENT
+  </p>
+
+  <h2>
+    UPDATE CASE STATUS
+  </h2>
+
+  <p class="grievance-help">
+    Status changes will also appear on the
+    member's My Grievances page.
+  </p>
+
+
+  <div class="grievance-field">
+
+    <label for="caseStatusSelect">
+      CURRENT CASE STATUS
+    </label>
+
+    <select id="caseStatusSelect">
+
+      <option value="SUBMITTED">
+        SUBMITTED
+      </option>
+
+      <option value="UNDER REVIEW">
+        UNDER REVIEW
+      </option>
+
+      <option value="MORE INFO NEEDED">
+        MORE INFO NEEDED
+      </option>
+
+      <option value="DRAFTING">
+        DRAFTING
+      </option>
+
+      <option value="FILED">
+        FILED
+      </option>
+
+      <option value="STEP 1">
+        STEP 1
+      </option>
+
+      <option value="STEP 2">
+        STEP 2
+      </option>
+
+      <option value="ARBITRATION">
+        ARBITRATION
+      </option>
+
+      <option value="RESOLVED">
+        RESOLVED
+      </option>
+
+      <option value="CLOSED">
+        CLOSED
+      </option>
+
+    </select>
+
+  </div>
+
+
+  <button
+    id="saveStatusButton"
+    class="grievance-submit"
+    type="button"
+    onclick="saveCaseStatus()">
+
+    SAVE CASE STATUS →
+
+  </button>
+
+</section>        MEMBER INFORMATION
       </h2>
 
 
