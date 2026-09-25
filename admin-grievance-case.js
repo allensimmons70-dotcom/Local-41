@@ -339,8 +339,18 @@ async function loadCase() {
     grievance.status ||
     "SUBMITTED"
   );
+const statusSelector =
+  document.getElementById(
+    "caseStatusSelect"
+  );
 
+if (statusSelector) {
 
+  statusSelector.value =
+    grievance.status ||
+    "SUBMITTED";
+
+}
   setText(
     "submittedDate",
     formatDate(
@@ -626,7 +636,126 @@ function formatTime(
 
 }
 
+/* =========================================
+   UPDATE CASE STATUS
+   ========================================= */
 
+async function saveCaseStatus() {
+
+  if (
+    !currentCase ||
+    !currentAdminProfile
+  ) {
+
+    showCaseMessage(
+      "Case information is not available.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  const selector =
+    document.getElementById(
+      "caseStatusSelect"
+    );
+
+
+  const button =
+    document.getElementById(
+      "saveStatusButton"
+    );
+
+
+  const newStatus =
+    selector.value;
+
+
+  button.disabled =
+    true;
+
+
+  button.textContent =
+    "SAVING...";
+
+
+  showCaseMessage(
+    "Updating case status..."
+  );
+
+
+  const {
+    error
+  } =
+    await local41Supabase
+      .from("grievance_requests")
+      .update({
+        status: newStatus
+      })
+      .eq(
+        "id",
+        currentCase.id
+      );
+
+
+  if (error) {
+
+    console.error(
+      error
+    );
+
+
+    showCaseMessage(
+      "Unable to update the case status.",
+      "error"
+    );
+
+
+    button.disabled =
+      false;
+
+
+    button.textContent =
+      "SAVE CASE STATUS →";
+
+
+    return;
+
+  }
+
+
+  currentCase.status =
+    newStatus;
+
+
+  setText(
+    "caseStatus",
+    newStatus
+  );
+
+
+  setText(
+    "caseHero",
+    `${currentCase.case_number || "Grievance Case"} • ${newStatus}`
+  );
+
+
+  showCaseMessage(
+    `Case status updated to ${newStatus}.`,
+    "success"
+  );
+
+
+  button.disabled =
+    false;
+
+
+  button.textContent =
+    "SAVE CASE STATUS ✓";
+
+}
 /* =========================================
    LOG OUT
    ========================================= */
