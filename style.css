@@ -2294,3 +2294,33 @@ footer small {
   }
 
 }
+/* =========================================
+   MEMBER PAYROLL ALERT
+   ========================================= */
+
+.member-payroll-alert {
+  background: #fff8df;
+  border: 2px solid #111;
+  border-left: 8px solid var(--gold);
+  padding: 28px;
+  margin-bottom: 35px;
+}
+
+.member-payroll-alert h2 {
+  margin: 8px 0 14px;
+  font-size: 30px;
+}
+
+.member-payroll-alert p,
+.member-payroll-alert li {
+  color: #555;
+  line-height: 1.6;
+}
+
+.member-payroll-alert ul {
+  padding-left: 22px;
+}
+
+.member-payroll-alert li {
+  margin-bottom: 10px;
+}
