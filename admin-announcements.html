@@ -1,0 +1,650 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width,initial-scale=1"
+  >
+
+  <meta
+    name="theme-color"
+    content="#111111"
+  >
+
+  <title>
+    Announcement Center | Local 41 KC
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="grievance-member.css"
+  >
+
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+  </script>
+
+  <script
+    src="supabase.js"
+    defer>
+  </script>
+
+  <script
+    src="admin-announcements.js"
+    defer>
+  </script>
+
+
+  <style>
+
+    .announcement-admin-grid {
+      display:grid;
+      grid-template-columns:
+        minmax(0,1fr)
+        minmax(0,.75fr);
+      gap:24px;
+      align-items:start;
+    }
+
+    .announcement-options {
+      display:grid;
+      grid-template-columns:
+        repeat(3,1fr);
+      gap:12px;
+      margin-top:20px;
+    }
+
+    .announcement-option {
+      border:1px solid #ccc;
+      background:#f7f7f7;
+      padding:16px;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+    }
+
+    .announcement-option input {
+      margin-top:3px;
+    }
+
+    .announcement-option strong {
+      display:block;
+      font-size:11px;
+      letter-spacing:1px;
+    }
+
+    .announcement-option small {
+      display:block;
+      color:#777;
+      line-height:1.4;
+      margin-top:5px;
+    }
+
+    .announcement-admin-list {
+      display:grid;
+      gap:16px;
+    }
+
+    .announcement-admin-card {
+      background:#fff;
+      border:1px solid #d8d8d8;
+      border-left:6px solid var(--gold);
+      padding:22px;
+    }
+
+    .announcement-admin-card h3 {
+      margin:8px 0 10px;
+      font-size:21px;
+    }
+
+    .announcement-admin-meta {
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-bottom:13px;
+    }
+
+    .announcement-chip {
+      background:#111;
+      color:#fff;
+      padding:6px 9px;
+      font-size:9px;
+      font-weight:900;
+      letter-spacing:1px;
+    }
+
+    .announcement-chip.gold {
+      background:var(--gold);
+      color:#111;
+    }
+
+    .announcement-admin-message {
+      color:#555;
+      line-height:1.6;
+      white-space:pre-wrap;
+    }
+
+    .announcement-admin-dates {
+      border-top:1px solid #ddd;
+      margin-top:18px;
+      padding-top:15px;
+      display:grid;
+      gap:6px;
+      font-size:12px;
+      color:#666;
+    }
+
+    .announcement-destinations {
+      font-size:11px;
+      font-weight:900;
+      margin-top:15px;
+    }
+
+    .announcement-cancel {
+      margin-top:16px;
+      border:1px solid #b42318;
+      background:transparent;
+      color:#b42318;
+      padding:10px 13px;
+      font-size:10px;
+      font-weight:900;
+      cursor:pointer;
+    }
+
+    .announcement-cancel:hover {
+      background:#b42318;
+      color:#fff;
+    }
+
+    .announcement-status-line {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:15px;
+    }
+
+    @media(max-width:800px) {
+
+      .announcement-admin-grid,
+      .announcement-options {
+        grid-template-columns:1fr;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<header class="top">
+
+  <div class="wrap nav">
+
+    <a
+      class="brand"
+      href="index.html"
+    >
+      <span>LOCAL</span>
+      <b>41</b>
+
+      <small>
+        KANSAS CITY
+      </small>
+    </a>
+
+
+    <nav class="nav-links">
+
+      <a href="admin.html">
+        ADMIN
+      </a>
+
+      <a href="admin-grievances.html">
+        GRIEVANCES
+      </a>
+
+      <button
+        class="admin-logout"
+        onclick="adminLogout()"
+      >
+        LOG OUT
+      </button>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+<main
+  id="announcementAdminPage"
+  class="admin-hidden"
+>
+
+
+<section class="admin-hero">
+
+  <div class="wrap">
+
+    <p class="eyebrow">
+      LOCAL 41 COMMUNICATIONS
+    </p>
+
+    <h1>
+      ANNOUNCEMENT
+      <em>CENTER.</em>
+    </h1>
+
+    <p class="admin-lead">
+      Publish member updates, schedule future notices
+      and control where each announcement appears.
+    </p>
+
+
+    <div class="admin-user-line">
+
+      SIGNED IN AS:
+
+      <strong id="adminName">
+        VERIFYING...
+      </strong>
+
+      <span id="adminRole">
+      </span>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<section class="admin-main">
+
+  <div class="wrap">
+
+
+    <a
+      class="portal-back"
+      href="admin.html"
+    >
+      ← BACK TO ADMIN DASHBOARD
+    </a>
+
+
+    <div
+      id="announcementAdminMessage"
+      class="auth-message"
+      aria-live="polite"
+    ></div>
+
+
+
+    <div class="announcement-admin-grid">
+
+
+      <!-- CREATE ANNOUNCEMENT -->
+
+      <section class="grievance-panel">
+
+        <p class="article-number">
+          CREATE
+        </p>
+
+        <h2>
+          NEW ANNOUNCEMENT
+        </h2>
+
+        <p class="grievance-help">
+          Publish immediately or schedule the
+          announcement for a future date and time.
+        </p>
+
+
+        <form
+          id="announcementForm"
+          onsubmit="saveAnnouncement(event)"
+        >
+
+          <div class="grievance-grid">
+
+
+            <div class="grievance-field full">
+
+              <label for="announcementTitle">
+                TITLE
+              </label>
+
+              <input
+                id="announcementTitle"
+                maxlength="120"
+                required
+              >
+
+            </div>
+
+
+            <div class="grievance-field">
+
+              <label for="announcementCategory">
+                CATEGORY
+              </label>
+
+              <select
+                id="announcementCategory"
+                required
+              >
+                <option value="GENERAL">
+                  GENERAL
+                </option>
+
+                <option value="PAYROLL">
+                  PAYROLL
+                </option>
+
+                <option value="MEETING">
+                  MEETING
+                </option>
+
+                <option value="CONTRACT">
+                  CONTRACT
+                </option>
+
+                <option value="GRIEVANCE">
+                  GRIEVANCE
+                </option>
+
+                <option value="MEMBER RESOURCE">
+                  MEMBER RESOURCE
+                </option>
+
+                <option value="SYSTEM">
+                  SYSTEM NOTICE
+                </option>
+
+                <option value="ACTION">
+                  ACTION NEEDED
+                </option>
+              </select>
+
+            </div>
+
+
+            <div class="grievance-field">
+
+              <label for="announcementPriority">
+                PRIORITY
+              </label>
+
+              <select id="announcementPriority">
+
+                <option value="LOW">
+                  LOW
+                </option>
+
+                <option
+                  value="NORMAL"
+                  selected
+                >
+                  NORMAL
+                </option>
+
+                <option value="HIGH">
+                  HIGH
+                </option>
+
+                <option value="URGENT">
+                  URGENT
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <div class="grievance-field full">
+
+              <label for="announcementMessage">
+                MESSAGE
+              </label>
+
+              <textarea
+                id="announcementMessage"
+                required
+                placeholder="Enter the member announcement..."
+              ></textarea>
+
+            </div>
+
+
+            <div class="grievance-field">
+
+              <label for="publishAt">
+                PUBLISH DATE / TIME
+              </label>
+
+              <input
+                id="publishAt"
+                type="datetime-local"
+                required
+              >
+
+            </div>
+
+
+            <div class="grievance-field">
+
+              <label for="expiresAt">
+                REMOVE AFTER
+              </label>
+
+              <input
+                id="expiresAt"
+                type="datetime-local"
+              >
+
+              <small class="grievance-help">
+                Optional. Leave blank to keep
+                the announcement active.
+              </small>
+
+            </div>
+
+
+          </div>
+
+
+
+          <div class="announcement-options">
+
+
+            <label class="announcement-option">
+
+              <input
+                id="showOnPortal"
+                type="checkbox"
+                checked
+              >
+
+              <span>
+
+                <strong>
+                  MEMBER PORTAL
+                </strong>
+
+                <small>
+                  Show to signed-in members.
+                </small>
+
+              </span>
+
+            </label>
+
+
+
+            <label class="announcement-option">
+
+              <input
+                id="showOnBoard"
+                type="checkbox"
+                checked
+              >
+
+              <span>
+
+                <strong>
+                  UNION BOARD
+                </strong>
+
+                <small>
+                  Show on the public Union Board.
+                </small>
+
+              </span>
+
+            </label>
+
+
+
+            <label class="announcement-option">
+
+              <input
+                id="sendEmail"
+                type="checkbox"
+              >
+
+              <span>
+
+                <strong>
+                  SEND EMAIL
+                </strong>
+
+                <small>
+                  Email opted-in active members
+                  when publishing becomes due.
+                </small>
+
+              </span>
+
+            </label>
+
+
+          </div>
+
+
+          <button
+            id="publishButton"
+            class="grievance-submit"
+            type="submit"
+          >
+            SAVE ANNOUNCEMENT →
+          </button>
+
+
+        </form>
+
+      </section>
+
+
+
+      <!-- EXISTING ANNOUNCEMENTS -->
+
+      <section class="grievance-panel">
+
+        <div class="announcement-status-line">
+
+          <div>
+
+            <p class="article-number">
+              MANAGE
+            </p>
+
+            <h2>
+              ANNOUNCEMENTS
+            </h2>
+
+          </div>
+
+
+          <button
+            class="admin-refresh"
+            type="button"
+            onclick="loadAnnouncements()"
+          >
+            REFRESH
+          </button>
+
+        </div>
+
+
+        <p class="grievance-help">
+          Scheduled, active and recently expired
+          announcements appear here.
+        </p>
+
+
+        <div
+          id="announcementList"
+          class="announcement-admin-list"
+        >
+
+          <div class="admin-loading">
+            Loading announcements...
+          </div>
+
+        </div>
+
+      </section>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+</main>
+
+
+
+<footer>
+
+  <div class="wrap">
+
+    <b>
+      LOCAL 41 • ADMIN PORTAL
+    </b>
+
+    <span>
+      Authorized Union Access Only
+    </span>
+
+    <small>
+      Member Communications
+    </small>
+
+  </div>
+
+</footer>
+
+
+</body>
+</html>
